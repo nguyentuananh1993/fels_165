@@ -26,7 +26,7 @@
 			<column name="avatar" length="255" />
 		</property>
 
-		<property name="isAdmin" type="yes_no">
+		<property name="isAdmin" type="boolean">
 			<column name="is_admin" not-null="true" />
 		</property>
 	</class>
@@ -42,5 +42,18 @@
 		where user.username =
 		:username
 	</query>
-	
+	<query name="User.SignIn">
+		select user
+		from User user
+		where user.username =
+		:username
+		and
+		user.password = :password
+	</query>
+	<query name="User.SelectUserByEmail">
+		select user
+		from User user
+		where 
+		user.email = :email
+	</query>
 </hibernate-mapping>

@@ -37,8 +37,22 @@ public class UserBusinessImpl implements UserBusiness {
 	}
 	
 	@Override
-	public void registerUser(User user){
-		
+	public void signUp(User user) {
+		try {
+			getUserDAO().signUp(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
+	@Override
+	public User validateEmail(String email) throws Exception {
+		try {
+			return getUserDAO().validateEmail(email);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
 }
