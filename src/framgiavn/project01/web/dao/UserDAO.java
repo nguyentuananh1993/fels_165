@@ -9,5 +9,9 @@ public interface UserDAO {
 	
 	public void signUp(User user);
 
-	User validateEmail(String email) throws Exception;
+	public User validateEmail(String email) throws Exception;
+
+	public User logIn(String username, String password) throws Exception;
+
+	public void editProfile(User user);
 }

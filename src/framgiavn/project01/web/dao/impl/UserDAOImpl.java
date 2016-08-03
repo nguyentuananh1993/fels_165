@@ -54,13 +54,9 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	@Override
 	public void signUp(User user) {
-		// user.setIsAdmin(false);
 		user.setAvatar("/images/default-avatar.jpg");
-/*		Session session = getSession();
-		Transaction tr = session.beginTransaction();
-		session.save(user);
-		tr.commit();
-*/		getHibernateTemplate().save(user);
+		getHibernateTemplate().save(user);
+		
 	}
 
 	@Override
@@ -73,5 +69,24 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+	
+	@Override
+	public User logIn(String username, String password) throws Exception {
+		try {
+			Query query = getSession().getNamedQuery("User.LogIn");
+			query.setParameter("username", username);
+			query.setParameter("password", password);
+			return (User) query.uniqueResult();
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+	}
+	
+	@Override
+	public void editProfile(User user) {
+		user.setAvatar("/images/"+user.getUser_id()+".jpg");
+		getHibernateTemplate().update(user);
 	}
 }
