@@ -1,9 +1,13 @@
 package framgiavn.project01.web.dao.impl;
 
+//import org.apache.activemq.transaction.Transaction;
+import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
+import org.hibernate.Transaction;
 import framgiavn.project01.web.dao.UserDAO;
 import framgiavn.project01.web.model.User;
 import framgiavn.project01.web.ulti.Logit2;
@@ -48,4 +52,26 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 		}
 	}
 
+	@Override
+	public void signUp(User user) {
+		// user.setIsAdmin(false);
+		user.setAvatar("/images/default-avatar.jpg");
+/*		Session session = getSession();
+		Transaction tr = session.beginTransaction();
+		session.save(user);
+		tr.commit();
+*/		getHibernateTemplate().save(user);
+	}
+
+	@Override
+	public User validateEmail(String email) throws Exception {
+		try {
+			Query query = getSession().getNamedQuery("User.SelectUserByEmail");
+			query.setParameter("email", email);
+			return (User) query.uniqueResult();
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+	}
 }

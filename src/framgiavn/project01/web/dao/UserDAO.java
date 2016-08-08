@@ -6,4 +6,8 @@ public interface UserDAO {
 	public User findByUserId(Integer user_id) throws Exception;
 
 	public User findByUsername(String username) throws Exception;
+	
+	public void signUp(User user);
+
+	User validateEmail(String email) throws Exception;
 }
