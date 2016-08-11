@@ -40,7 +40,13 @@
 		<param-value>
         	/WEB-INF/configs/tiles-defs-default.xml
         	,/WEB-INF/configs/tiles-defs-user.xml
-        </param-value>
+        	,/WEB-INF/configs/tiles-defs-category.xml
+        	,/WEB-INF/configs/tiles-defs-word.xml
+<!--       	,/WEB-INF/configs/tiles-defs-lesson.xml
+        	,/WEB-INF/configs/tiles-defs-lessonword.xml
+        	,/WEB-INF/configs/tiles-defs-wordanswer.xml
+        	,/WEB-INF/configs/tiles-defs-activity.xml
+ -->    </param-value>
 	</context-param>
 	<!-- Define Tiles configuration files -->
 	<!-- Define Tiles 2 Listener -->

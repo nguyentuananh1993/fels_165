@@ -40,6 +40,13 @@
 		<property name="mappingResources">
 			<list>
 				<value>framgiavn/project01/web/model/User.hbm.xml</value>
+				<value>framgiavn/project01/web/model/Category.hbm.xml</value>
+				<value>framgiavn/project01/web/model/Word.hbm.xml</value>
+				<value>framgiavn/project01/web/model/LessonWord.hbm.xml</value>
+				<value>framgiavn/project01/web/model/WordAnswer.hbm.xml</value>
+				<value>framgiavn/project01/web/model/Lesson.hbm.xml</value>
+				<value>framgiavn/project01/web/model/Activity.hbm.xml</value>
+
 			</list>
 		</property>
 
