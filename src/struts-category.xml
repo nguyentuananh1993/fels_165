@@ -6,7 +6,7 @@
 	<package name="Category" namespace="/category" extends="default-web">
 		
 		<action name="listAllCategory" class="springCategoryAction" method="listAllCategory">
-			<result name="success">Success</result>
+			<result name="success">ListAll</result>
 		
 			<result name="error">HomePage</result>
 		</action>
