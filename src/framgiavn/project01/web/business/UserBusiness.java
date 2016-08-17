@@ -8,5 +8,11 @@ public interface UserBusiness {
 
 	public User findByUsername(String username) throws Exception;
 	
-	public void registerUser(User user) throws Exception;
+	public void signUp(User user) throws Exception;
+
+	public User validateEmail(String email) throws Exception;
+
+	public User logIn(String username, String password) throws Exception;
+
+	public void editProfile(User user) throws Exception;
 }

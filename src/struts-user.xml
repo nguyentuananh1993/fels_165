@@ -19,5 +19,23 @@
 			<result name="success">User.Info</result>
 			<result name="error">User.Info</result>
 		</action>
+
+		<action name="signUp" class="springUserAction" method="signUp">
+			<result name="input">SignUp</result>
+			<result name="success">User.Info</result>
+			<result name="Error">SignUp</result>
+		</action>
+
+		<action name="logIn" class="springUserAction" method="logIn">
+			<result name="input">LogIn</result>
+			<result name="success">User.Info</result>
+			<result name="error">LogIn</result>
+		</action>
+
+		<action name="editProfile" class="springUserAction" method="editProfile">
+			<result name="input">Profile</result>
+			<result name="success">User.Info</result>
+			<result name="error">Profile</result>
+		</action>
 	</package>
 </struts>

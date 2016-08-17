@@ -33,4 +33,10 @@
 
 	<!-- ===== Include Web Module Configuration ===== -->
 	<include file="struts-user.xml" />
-</struts>
+	<include file="struts-word.xml" />
+	<include file="struts-category.xml" />
+<!-- 	<include file="struts-lesson.xml" />
+	<include file="struts-lessonword.xml" />
+	<include file="struts-wordanswer.xml" />
+	<include file="struts-activity.xml" />
+ --></struts>

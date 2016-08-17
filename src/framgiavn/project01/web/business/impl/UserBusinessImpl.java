@@ -35,10 +35,44 @@ public class UserBusinessImpl implements UserBusiness {
 			throw e;
 		}
 	}
-	
+
 	@Override
-	public void registerUser(User user){
-		
+	public void signUp(User user) {
+		try {
+			getUserDAO().signUp(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
+	@Override
+	public User validateEmail(String email) throws Exception {
+		try {
+			return getUserDAO().validateEmail(email);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public User logIn(String username, String password) throws Exception {
+		try {
+			return getUserDAO().logIn(username, password);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public void editProfile(User user) throws Exception {
+		try {
+			getUserDAO().editProfile(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
 }
