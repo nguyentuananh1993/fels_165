@@ -33,8 +33,7 @@ public class CategoryAction extends ActionSupport {
 	
  	public String listAllCategory() throws Exception {
 		try {
-			int category_id = categoryBusiness.findCategoryIdByName("Newbie");
-			System.out.println(category_id);
+			listCategory = categoryBusiness.listAllCategory();
 			return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();
