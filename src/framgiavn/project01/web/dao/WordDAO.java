@@ -13,6 +13,6 @@ public interface WordDAO {
 
 	public List<Word> showAllWord();
 
-	public List<Word> wordFilterByCategory(String name) throws Exception;
+	public List<Word> wordFilterByCategory(int category_id) throws Exception;
 
 }

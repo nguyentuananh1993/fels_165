@@ -5,8 +5,9 @@
 
 <tiles-definitions>
 
-	<definition name="Success" extends="Default.Web">
-		<put-attribute name="body" value="/category/success.jsp" />
+
+	<definition name="ListAll" extends="Default.Web">
+		<put-attribute name="body" value="/category/listAllCategory.jsp" />
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">

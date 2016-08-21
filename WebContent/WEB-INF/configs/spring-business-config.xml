@@ -19,6 +19,7 @@
 		<property name="target">
 			<bean class="framgiavn.project01.web.business.impl.WordBusinessImpl">
 				<property name="wordDAO" ref="WordDAO" />
+				<property name="categoryDAO" ref="CategoryDAO" />
 			</bean>
 		</property>
 	</bean>

@@ -31,7 +31,7 @@ public class CategoryAction extends ActionSupport {
 		this.categoryBusiness = categoryBusiness;
 	}
 	
-	public String listAllCategory() throws Exception {
+ 	public String listAllCategory() throws Exception {
 		try {
 			listCategory = categoryBusiness.listAllCategory();
 			return SUCCESS;

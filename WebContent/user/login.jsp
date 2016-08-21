@@ -5,4 +5,5 @@
 		<s:password name="user.password" label="Password"></s:password>
 		<s:submit value="Log In" align="center" />
 	</s:form>
+	helloworld
 </div>
