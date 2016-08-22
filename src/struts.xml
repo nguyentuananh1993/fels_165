@@ -25,7 +25,7 @@
 				exception="java.lang.RuntimeException" />
 		</global-exception-mappings>
 
-		<action name="/" class="springUserAction" method="homePage">
+		<action name="" class="springUserAction" method="homePage">
 			<result name="success">HomePage</result>
 		</action>
 
