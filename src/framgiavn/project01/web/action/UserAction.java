@@ -192,7 +192,12 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 
 		return ERROR;
 	}
-
+	 public String signOut() {
+	    if (session != null) {
+	      session.invalidate();
+	    }
+	    return SUCCESS;
+	  }
 	public String editProfile() throws Exception {
 		try {
 			User user = (User) ActionContext.getContext().getSession().get("user");
@@ -213,7 +218,12 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 		}
 		return ERROR;
 	}
-
+	
+	public String showProfile(){
+		user = (User) ActionContext.getContext().getSession().get("user");
+		return SUCCESS;
+	}
+	
 	public String homePage() {
 		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		return SUCCESS;

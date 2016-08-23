@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Category" namespace="/category" extends="default-web">
+		
+		<action name="listAllCategory" class="springCategoryAction" method="listAllCategory">
+			<result name="success">ListAll</result>
+		
+			<result name="error">HomePage</result>
+		</action>
+		
+	</package>
+</struts>

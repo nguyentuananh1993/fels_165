@@ -63,7 +63,7 @@
 	</listener>
 	<!-- Define Welcome File List -->
 	<welcome-file-list>
-		<welcome-file>/index.jsp</welcome-file>
+		<welcome-file></welcome-file>
 	</welcome-file-list>
 
 	<session-config>

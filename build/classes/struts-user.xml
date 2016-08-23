@@ -21,21 +21,28 @@
 		</action>
 
 		<action name="signUp" class="springUserAction" method="signUp">
-			<result name="input">SignUp</result>
+			<result name="input">User.SignUp</result>
 			<result name="success">User.Info</result>
-			<result name="Error">SignUp</result>
+			<result name="error">User.SignUp</result>
 		</action>
 
 		<action name="logIn" class="springUserAction" method="logIn">
-			<result name="input">LogIn</result>
+			<result name="input">User.LogIn</result>
 			<result name="success">User.Info</result>
-			<result name="error">LogIn</result>
+			<result name="error">User.LogIn</result>
 		</action>
 
 		<action name="editProfile" class="springUserAction" method="editProfile">
-			<result name="input">Profile</result>
+			<result name="input">USer.Profile</result>
 			<result name="success">User.Info</result>
-			<result name="error">Profile</result>
+			<result name="error">User.Profile</result>
+		</action>
+
+		<action name="showProfile" class="springUserAction" method="showProfile">
+			<result name="success">User.ShowProfile</result>
+		</action>
+		<action name="signOut" class="springUserAction" method="signOut">
+			<result name="success">User.Info</result>
 		</action>
 	</package>
 </struts>

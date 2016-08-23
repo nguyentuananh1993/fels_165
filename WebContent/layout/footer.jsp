@@ -1,10 +1,6 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
-<div id="top-footer"></div>
-
-<div id="bottom-footer">
-	<ul id="quicklink">
-		<li><a href="#" target="_blank"><s:text
-					name="label.footer.aboutUs">About us</s:text></a></li>
-	</ul>
-
-</div>
+<footer class="footer">
+	<div class="container">
+		<p class="text-muted">JFE-Systems extends (c) 2016</p>
+	</div>
+</footer>
