@@ -4,7 +4,6 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
-
 	<definition name="User.Info" extends="Default.Web">
 		<put-attribute name="body" value="/user/user_info.jsp" />
 		<put-list-attribute name="js">
@@ -12,29 +11,38 @@
 		<put-list-attribute name="css">
 		</put-list-attribute>
 	</definition>
-	
-	<definition name="SignUp" extends="Default.Web">
+
+	<definition name="User.SignUp" extends="Default.Web">
 		<put-attribute name="body" value="/user/signup.jsp" />
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">
+		<add-attribute value="/css/login.css"/>
 		</put-list-attribute>
 	</definition>
-	
-	<definition name="LogIn" extends="Default.Web">
+
+	<definition name="User.LogIn" extends="Default.Web">
 		<put-attribute name="body" value="/user/login.jsp" />
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">
+		<add-attribute value="/css/login.css"/>
 		</put-list-attribute>
 	</definition>
 
-	<definition name="Profile" extends="Default.Web">
+	<definition name="User.Profile" extends="Default.Web">
 		<put-attribute name="body" value="/user/profile.jsp" />
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">
 		</put-list-attribute>
 	</definition>
-	
+	<definition name="User.ShowProfile" extends="Default.Web">
+		<put-attribute name="body" value="/user/showprofile.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+		</put-list-attribute>
+	</definition>
+
 </tiles-definitions>
