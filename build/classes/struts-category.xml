@@ -7,10 +7,6 @@
 		
 		<action name="listAllCategory" class="springCategoryAction" method="listAllCategory">
 			<result name="success">ListAll</result>
-<<<<<<< HEAD
-=======
-		
->>>>>>> d52266168e5765fe2375f067bd4fb4424497340b
 			<result name="error">HomePage</result>
 		</action>
 		
