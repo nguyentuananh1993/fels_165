@@ -38,18 +38,27 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	private String myFileFileName;
 	private String email;
 	private String username;
+	private String password;
 	private SessionMap<String, Object> session;
 	private ServletContext context;
-	
+
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = (SessionMap<String, Object>) session;
 	}
 
 	public void setServletContext(ServletContext servletContext) {
-	     this.context = servletContext;
+		this.context = servletContext;
 	}
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -57,7 +66,7 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -65,7 +74,7 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public void setUserBusiness(UserBusiness userBusiness) {
 		this.userBusiness = userBusiness;
 	}
@@ -184,48 +193,84 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 			if (user != null) {
 				session.put("user", user);
 				return SUCCESS;
-			} else
+			} else {
+				System.out.println("ERROR1");
 				return ERROR;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		System.out.println("ERROR2");
 		return ERROR;
 	}
-	 public String signOut() {
-	    if (session != null) {
-	      session.invalidate();
-	    }
-	    return SUCCESS;
-	  }
+
+	public String signOut() {
+		if (session != null) {
+			session.invalidate();
+		}
+		return SUCCESS;
+	}
+
+	public String changePassword() throws Exception {
+		if ((password == null) || (passwordConfirm == null)) {
+			return ERROR;
+		}
+		if (password.length() < 8) {
+			addFieldError("user.password", "Password must have at least 8 characters");
+			return ERROR;
+		} else if (!password.equals(passwordConfirm)) {
+			addFieldError("passwordConfirm", "Password is not matched");
+			return ERROR;
+		}
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		user.setPassword(password);
+		userBusiness.editProfile(user);
+		return SUCCESS;
+	}
+
 	public String editProfile() throws Exception {
+		if ((username == null) || (email == null)) {
+			user = (User) ActionContext.getContext().getSession().get("user");
+			return ERROR;
+		}
 		try {
 			User user = (User) ActionContext.getContext().getSession().get("user");
 			System.out.println(user.getUsername());
 			String destPath = context.getRealPath("/") + "images\\";
 			System.out.println(destPath);
 			String dest = user.getUser_id() + ".jpg";
-			File destFile = new File(destPath, dest);
-			FileUtils.copyFile(myFile, destFile);
-			user.setAvatar(destPath + user.getUser_id() + ".jpg");
-			user.setEmail(email);
-			user.setUsername(username);
+			if (myFile != null) {
+				File destFile = new File(destPath, dest);
+				FileUtils.copyFile(myFile, destFile);
+				user.setAvatar(destPath + user.getUser_id() + ".jpg");
+			} else {
+				System.out.println("Myfile == Null? Why?");
+			}
+			if (email.trim().equals(user.getEmail())) {
+				;
+			} else {
+				user.setEmail(email);
+			}
+			if (username.trim().equals(user.getUsername())) {
+				;
+			} else {
+				user.setUsername(username);
+			}
 			userBusiness.editProfile(user);
-			validateSignUp();
 			return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return ERROR;
 	}
-	
-	public String showProfile(){
+
+	public String showProfile() {
 		user = (User) ActionContext.getContext().getSession().get("user");
 		return SUCCESS;
 	}
-	
+
 	public String homePage() {
-		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		System.out.println("Homepage!!!!!");
 		return SUCCESS;
 	}
 }
