@@ -28,8 +28,9 @@
 		</property>
 
 		<property name="updated_at" type="java.util.Date">
-			<column name="updated" />
+			<column name="updated_at" />
 		</property>
 
 	</class>
+	
 </hibernate-mapping>

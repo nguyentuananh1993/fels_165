@@ -28,12 +28,15 @@
 	<bean id="springLessonAction" class="framgiavn.project01.web.action.LessonAction"
 		scope="prototype">
 		<property name="lessonBusiness" ref="LessonBusiness" />
+		<property name="wordBusiness" ref="WordBusiness" />		
+		<property name="wordAnswerBusiness" ref="WordAnswerBusiness" />
 	</bean>
 
 	<!-- ================== LESSON WORD MODULE ================== -->
 	<bean id="springLessonWordAction" class="framgiavn.project01.web.action.LessonWordAction"
 		scope="prototype">
 		<property name="lessonWordBusiness" ref="LessonWordBusiness" />
+		
 	</bean>
 
 	<!-- ================== WORD ANSWER MODULE ================== -->

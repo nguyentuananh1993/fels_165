@@ -2,6 +2,7 @@ package framgiavn.project01.web.business.impl;
 
 import framgiavn.project01.web.business.LessonBusiness;
 import framgiavn.project01.web.dao.LessonDAO;
+import framgiavn.project01.web.model.Lesson;
 
 public class LessonBusinessImpl implements LessonBusiness {
 	private LessonDAO lessonDAO;
@@ -14,4 +15,15 @@ public class LessonBusinessImpl implements LessonBusiness {
 		this.lessonDAO = lessonDAO;
 	}
 
+	@Override
+	public int saveLesson(Lesson lesson) throws Exception{
+		int id = 0;
+		try{
+		id = lessonDAO.saveLesson(lesson);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return id;
+	}
 }
