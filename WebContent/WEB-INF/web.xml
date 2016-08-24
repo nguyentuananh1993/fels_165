@@ -41,7 +41,8 @@
         	/WEB-INF/configs/tiles-defs-default.xml
         	,/WEB-INF/configs/tiles-defs-user.xml
         	,/WEB-INF/configs/tiles-defs-category.xml
-        	,/WEB-INF/configs/tiles-def-word.xml
+        	,/WEB-INF/configs/tiles-defs-word.xml
+        	,/WEB-INF/configs/tiles-defs-admin.xml
 <!--       	,/WEB-INF/configs/tiles-defs-lesson.xml
         	,/WEB-INF/configs/tiles-defs-lessonword.xml
         	,/WEB-INF/configs/tiles-defs-wordanswer.xml

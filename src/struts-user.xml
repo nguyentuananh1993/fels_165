@@ -27,7 +27,6 @@
 		</action>
 
 		<action name="logIn" class="springUserAction" method="logIn">
-			<result name="input">User.LogIn</result>
 			<result name="success">User.Info</result>
 			<result name="error">User.LogIn</result>
 		</action>

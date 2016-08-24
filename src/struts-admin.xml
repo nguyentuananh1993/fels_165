@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Admin" namespace="/admin" extends="default-web">
+		
+		<action name="logIn" class="springAdminAction" method="adminLogIn">
+			<result name="input">User.LogIn</result>
+			<result name="success">AdminHomePage</result>
+			<result name="error">AdminLogIn</result>
+		</action>
+		
+		<action name="" class="springAdminAction" method="adminHomePage" >
+			<result name="success">AdminHomePage</result>
+			<result name="error">AdminLogIn</result>
+		</action>
+		<action name="user" class="springAdminAction" method="adminUserList">
+			<result name="success">AdminUser</result>
+			<result name="error">AdminLogIn</result>
+		</action>
+		<action name="userDelete*" class="springAdminAction" method="adminDeleteUser">
+			<param name="user.user_id">{1}</param>
+			<result name="success">AdminUser</result>
+			<result name="error">AdminLogIn</result>
+			<result name="finish" type="redirect">
+				<param name="location">/admin/user</param>
+			</result>
+		</action>
+		
+		<action name="userDeleteAll" class="springAdminAction" method="adminDeleteAll">
+			<result name="success">AdminUser</result>
+			<result name="error">AdminLogIn</result>
+			<result name="finish" type="redirect">
+				<param name="location">/admin/user</param>
+			</result>
+		</action>
+	</package>
+</struts>

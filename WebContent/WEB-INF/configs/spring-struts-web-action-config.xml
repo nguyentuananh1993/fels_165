@@ -9,7 +9,11 @@
 		scope="prototype">
 		<property name="userBusiness" ref="UserBusiness" />
 	</bean>
-
+	<!-- ================== ADMIN MODULE ================== -->
+	<bean id="springAdminAction" class="framgiavn.project01.web.action.AdminAction"
+		scope="prototype">
+		<property name="userBusiness" ref="UserBusiness" />
+	</bean>
 	<!-- ================== WORD MODULE ================== -->
 	<bean id="springWordAction" class="framgiavn.project01.web.action.WordAction"
 		scope="prototype">
@@ -47,5 +51,7 @@
 		scope="prototype">
 		<property name="activityBusiness" ref="ActivityBusiness" />
 	</bean>
+
+
 
 </beans>

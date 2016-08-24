@@ -17,6 +17,10 @@ body {
   opacity: 0.5;
 }
 
+.user-wrapper {
+	background-color: #fff;
+	margin-bottom: 40px;
+}
 .user-wrapper .btn {
   border-radius: 0;
   margin: 5px;

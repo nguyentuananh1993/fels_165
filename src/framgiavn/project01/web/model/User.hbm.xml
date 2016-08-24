@@ -62,4 +62,21 @@
 		where user.username = :username
 		and	user.password = :password
 	</query>
+	
+	<query name="User.SelectAll">
+		select user
+		from User user
+	</query>
+	
+	<query name="User.DeleteByUserId">
+		select user
+		from User user
+		where user.user_id = :user_id
+	</query>
+	
+	<query name="User.DeleteAllUser">
+		select user
+		from User user
+		where user.isAdmin = :is_admin
+	</query>
 </hibernate-mapping>
