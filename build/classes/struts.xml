@@ -28,7 +28,9 @@
 		<action name="" class="springUserAction" method="homePage">
 			<result name="success">HomePage</result>
 		</action>
-
+		<action name="about" class="springUserAction" method="about">
+			<result name="success">About</result>
+		</action>
 	</package>
 
 	<!-- ===== Include Web Module Configuration ===== -->

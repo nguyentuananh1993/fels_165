@@ -228,4 +228,9 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		return SUCCESS;
 	}
+	
+	public String about() {
+		System.out.println("open about page");
+		return SUCCESS;
+	}
 }

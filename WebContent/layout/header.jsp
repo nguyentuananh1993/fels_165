@@ -18,7 +18,7 @@
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="">HOME</a></li>
-				<li><a href="./about.html">ABOUT</a></li>
+				<li><a href="<s:url value="/about"/>">ABOUT</a></li>
 				<% Object obj = request.getSession().getAttribute("user");
 					if(obj == null){
 				%>

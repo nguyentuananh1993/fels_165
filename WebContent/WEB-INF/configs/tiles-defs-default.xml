@@ -40,4 +40,12 @@
 		</put-list-attribute>
 	</definition>
 
+	<definition name="About" extends="Default.Web">
+		<put-attribute name="body" value="/about.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+		</put-list-attribute>
+	</definition>
+
 </tiles-definitions>
