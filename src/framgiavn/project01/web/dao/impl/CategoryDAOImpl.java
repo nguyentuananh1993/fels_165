@@ -41,4 +41,18 @@ public class CategoryDAOImpl extends HibernateDaoSupport implements CategoryDAO 
 			throw re;
 		}
 	}
+	
+	@Override
+	public Category findCategoryById(int category_id) throws Exception {
+		try {
+			Query query = getSession().getNamedQuery("Category.SelectCategoryById");
+			query.setParameter("category_id", category_id);
+			Category category = (Category) query.uniqueResult();
+			return category;
+		} catch (RuntimeException re) {
+			log.error ("get failed", re);
+			throw re;
+		}
+	}
+
 }

@@ -8,6 +8,10 @@
 	<bean id="springUserAction" class="framgiavn.project01.web.action.UserAction"
 		scope="prototype">
 		<property name="userBusiness" ref="UserBusiness" />
+		<property name="activityBusiness" ref="ActivityBusiness" />
+		<property name="lessonBusiness" ref="LessonBusiness" />
+		<property name="categoryBusiness" ref="CategoryBusiness" />
+
 	</bean>
 
 	<!-- ================== WORD MODULE ================== -->

@@ -1,6 +1,7 @@
 package framgiavn.project01.web.dao.impl;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -31,5 +32,18 @@ public class LessonDAOImpl extends HibernateDaoSupport implements LessonDAO {
 			
 		}
 		return id;
+	}
+	
+	@Override
+	public int getCategoryIdByLessonId(int lesson_id) throws Exception {
+		try{
+			Query query = getSession().getNamedQuery("Lesson.SelectLessonByLessonId");
+			query.setParameter("lesson_id", lesson_id);
+			Lesson lesson = (Lesson) query.uniqueResult();
+			return lesson.getCategory_id();
+		} catch (RuntimeException re) {
+			log.error("Get failed", re);
+			throw re;
+		}
 	}
 }

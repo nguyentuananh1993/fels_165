@@ -32,5 +32,9 @@
 		</property>
 
 	</class>
-	
+	<query name="Lesson.SelectLessonByLessonId">
+		select lesson
+		from Lesson lesson
+		where lesson.lesson_id = :lesson_id
+	</query>
 </hibernate-mapping>

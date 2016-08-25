@@ -1,6 +1,8 @@
 package framgiavn.project01.web.action;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -21,8 +23,14 @@ import org.springframework.web.context.ServletContextAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ActionContext;
 
+import framgiavn.project01.web.business.ActivityBusiness;
+import framgiavn.project01.web.business.CategoryBusiness;
+import framgiavn.project01.web.business.LessonBusiness;
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.model.User;
+import framgiavn.project01.web.model.Activity;
+import framgiavn.project01.web.model.Lesson;
+import framgiavn.project01.web.model.Category;
 
 public class UserAction extends ActionSupport implements SessionAware, ServletContextAware {
 	/**
@@ -40,16 +48,21 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	private String username;
 	private SessionMap<String, Object> session;
 	private ServletContext context;
-	
+	private ActivityBusiness activityBusiness;
+	private List<Activity> listActivity;
+	private List<Category> listCategory = new ArrayList<Category>();
+	private CategoryBusiness categoryBusiness;
+	private LessonBusiness lessonBusiness;
+
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = (SessionMap<String, Object>) session;
 	}
 
 	public void setServletContext(ServletContext servletContext) {
-	     this.context = servletContext;
+		this.context = servletContext;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -57,7 +70,7 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -65,7 +78,7 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public void setUserBusiness(UserBusiness userBusiness) {
 		this.userBusiness = userBusiness;
 	}
@@ -108,6 +121,50 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 
 	public void setMyFileFileName(String myFileFileName) {
 		this.myFileFileName = myFileFileName;
+	}
+
+	public ActivityBusiness getActivityBusiness() {
+		return activityBusiness;
+	}
+
+	public void setActivityBusiness(ActivityBusiness activityBusiness) {
+		this.activityBusiness = activityBusiness;
+	}
+
+	public UserBusiness getUserBusiness() {
+		return userBusiness;
+	}
+
+	public List<Activity> getListActivity() {
+		return listActivity;
+	}
+
+	public void setListActivity(List<Activity> listActivity) {
+		this.listActivity = listActivity;
+	}
+
+	public List<Category> getListCategory() {
+		return listCategory;
+	}
+
+	public void setListCategory(List<Category> listCategory) {
+		this.listCategory = listCategory;
+	}
+
+	public CategoryBusiness getCategoryBusiness() {
+		return categoryBusiness;
+	}
+
+	public void setCategoryBusiness(CategoryBusiness categoryBusiness) {
+		this.categoryBusiness = categoryBusiness;
+	}
+
+	public LessonBusiness getLessonBusiness() {
+		return lessonBusiness;
+	}
+
+	public void setLessonBusiness(LessonBusiness lessonBusiness) {
+		this.lessonBusiness = lessonBusiness;
 	}
 
 	public String findByUserId() {
@@ -192,12 +249,14 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 
 		return ERROR;
 	}
-	 public String signOut() {
-	    if (session != null) {
-	      session.invalidate();
-	    }
-	    return SUCCESS;
-	  }
+
+	public String signOut() {
+		if (session != null) {
+			session.invalidate();
+		}
+		return SUCCESS;
+	}
+
 	public String editProfile() throws Exception {
 		try {
 			User user = (User) ActionContext.getContext().getSession().get("user");
@@ -218,14 +277,27 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 		}
 		return ERROR;
 	}
-	
-	public String showProfile(){
+
+	public String showProfile() {
 		user = (User) ActionContext.getContext().getSession().get("user");
+		try {
+			listActivity = activityBusiness.showActivity(user.getUser_id());
+			for(int i = 0; i < listActivity.size(); i++){
+				Activity a = listActivity.get(i);
+				int category_id = lessonBusiness.getCategoryIdByLessonId(a.getTarget_id());
+				Category c = categoryBusiness.findCategoryById(category_id);
+				listCategory.add(i, c);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return SUCCESS;
 	}
-	
+
 	public String homePage() {
 		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		return SUCCESS;
 	}
+
 }

@@ -10,4 +10,6 @@ public interface CategoryDAO {
 
 	public List<Category> listAllCategory() throws Exception;
 
+	public Category findCategoryById(int category_id) throws Exception;
+
 }
