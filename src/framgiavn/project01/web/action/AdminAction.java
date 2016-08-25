@@ -1,10 +1,12 @@
 package framgiavn.project01.web.action;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.jasper.tagplugins.jstl.core.Redirect;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
@@ -160,6 +162,30 @@ public class AdminAction extends ActivityAction implements SessionAware, Servlet
 		this.passwordConfirm = passwordConfirm;
 	}
 	
+	public String adminUserEdit() throws Exception{
+		try {
+			user = (User)userBusiness.findByUserId(user.getUser_id());
+			if(user != null) {
+				return SUCCESS;
+			} else {
+				return ERROR;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	public String actionAdminEditUser() {
+		try {
+			userBusiness.editProfile(user);
+			validateSignUp();
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ERROR;
+	}
 	public String adminAddUser() {
 		return SUCCESS;
 	}

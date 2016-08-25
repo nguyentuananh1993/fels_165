@@ -38,18 +38,16 @@
 						<table class="table">
 							<thead>
 								<tr style="">
-									<th style="width: 30px; text-align: center;"></th>
 									<th>ID</th>
 									<th style="width: 200px;">Username</th>
 									<th style="width: 350px;">Email</th>
 									<th style="width: 150px;">User Type</th>
-									<th style="width: 300px;">Action</th>
+									<th class="text-center" style="width: 300px;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<s:iterator value="listUsers">
 									<tr>
-										<td><input type="checkbox" name="" value=""></td>
 										<td>${user_id }</td>
 										<td>${username }</td>
 										<td>${email }</td>
@@ -61,7 +59,7 @@
 													<span class="label label-success">User</span>
 												</c:otherwise>
 											</c:choose></td>
-										<td><a href="#" class="btn btn-warning"> <i
+										<td><a href="<s:url value="/admin/userEdit"/>${user_id}" class="btn btn-warning"> <i
 												class="fa fa-edit"></i>&nbsp; Edit
 										</a> <a href="<s:url value="/admin/userDelete"/>${user_id}"
 											class="btn btn-danger" onclick="return confirmDelete();">

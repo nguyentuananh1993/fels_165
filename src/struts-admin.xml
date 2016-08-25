@@ -38,7 +38,20 @@
 			<result name="success" type="redirect">
 				<param name="location">/admin/user</param>
 			</result>
-			
+		</action>
+		<action name="userEdit*" class="springAdminAction" method="adminUserEdit">
+			<param name="user.user_id">{1}</param>
+			<result name="error" type="redirect">
+				<param name="location">/admin/user</param>
+			</result>
+			<result name="success">AdminUserEdit</result>
+		</action>
+
+		<action name="actionUserEdit" class="springAdminAction" method="actionAdminEditUser">
+			<result name="error">AdminUser</result>
+			<result name="success" type="redirect">
+				<param name="location">/admin/user</param>
+			</result>
 		</action>
 		<action name="userDeleteAll" class="springAdminAction" method="adminDeleteAll">
 			<result name="success">AdminUser</result>

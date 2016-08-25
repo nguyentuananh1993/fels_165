@@ -38,7 +38,16 @@
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">
-		<add-attribute value="/css/admin.css" />
+			<add-attribute value="/css/admin.css" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="AdminUserEdit" extends="Default.Web">
+		<put-attribute name="body" value="/admin/user_edit.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+			<add-attribute value="/css/admin.css" />
 		</put-list-attribute>
 	</definition>
 </tiles-definitions>
