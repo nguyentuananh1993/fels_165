@@ -22,7 +22,6 @@
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign up</button>
-      </form>
-      
+      </form>   
     </div>
   </div>

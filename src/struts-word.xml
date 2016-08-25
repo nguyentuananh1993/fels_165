@@ -10,6 +10,14 @@
 			<result name="none">HomePage</result>
 			<result name="error">HomePage</result>
 		</action>
+		<action name="wordFilter" class="springWordAction" method="findWord">
+			<result name="success">WordList</result>
+			<result name="none">HomePage</result>
+			<result name="error">HomePage</result>
+		</action>
+		<action name="" class="springWordAction" method="showWord">
+			<result name="success">WordList</result>
+		</action>
 		
 	</package>
 </struts>

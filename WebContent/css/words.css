@@ -198,6 +198,10 @@ ul li {
     display: none;
   }
 }
+.filter{
+	margin: 0 auto;
+	padding-top: 20px;
+}
 
 .terms {
     background-color: #fff;
@@ -208,6 +212,6 @@ ul li {
 }
 
 .term {
-    padding: 20px;
+    padding: 15px;
     border-bottom: 1px solid #D7D6D3;
 }
