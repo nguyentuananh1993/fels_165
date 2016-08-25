@@ -38,6 +38,8 @@ ul {
   padding: 0px;
   margin-bottom: 0px;
 }
+
 td {
 	vertical-align: middle !important;
+	padding: 10px;
 }

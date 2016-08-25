@@ -26,7 +26,7 @@ public class AdminAction extends ActivityAction implements SessionAware, Servlet
 	private List<User> listUsers;
 	private SessionMap<String, Object> session;
 	private User user;
-	
+	private String passwordConfirm;
 	public String execute(){
 	   return ERROR;
 	}
@@ -152,5 +152,66 @@ public class AdminAction extends ActivityAction implements SessionAware, Servlet
 		return ERROR;
 	}
 
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
 
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+	
+	public String adminAddUser() {
+		return SUCCESS;
+	}
+	
+	public String actionAdminAddUser() {
+		try {
+			validateSignUp();
+			userBusiness.signUp(user);
+			user = userBusiness.findByUsername(user.getUsername());
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ERROR;
+	}
+	
+	public void validateSignUp() {
+		if (user != null) {
+			if (user.getEmail() == null || user.getEmail().trim().equals("")) {
+				addFieldError("user.email", "Email is required");
+			} else {
+				User oldUser = null;
+				try {
+					oldUser = userBusiness.validateEmail(user.getEmail());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (oldUser != null) {
+					addFieldError("user.email", "Email already exist.");
+				}
+			}
+			if (user.getUsername() == null || user.getUsername().trim().equals("")) {
+				addFieldError("user.username", "Username is required");
+			} else {
+				User oldUser = null;
+				try {
+					oldUser = userBusiness.findByUsername(user.getUsername());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (oldUser != null) {
+					addFieldError("user.username", "Username already exist.");
+				}
+			}
+			if (user.getPassword() == null || user.getPassword().trim().equals("")) {
+				addFieldError("user.password", "Password can not be empty");
+			} else if (user.getPassword().length() < 8) {
+				addFieldError("user.password", "Password must have at least 8 characters");
+			} else if (!user.getPassword().equals(this.passwordConfirm)) {
+				addFieldError("passwordConfirm", "Password is not matched");
+			}
+		}
+	}
+	
 }

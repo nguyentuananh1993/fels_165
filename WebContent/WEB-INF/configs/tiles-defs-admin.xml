@@ -10,26 +10,35 @@
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">
-		<add-attribute value="/css/admin.css"/>
+			<add-attribute value="/css/admin.css" />
 		</put-list-attribute>
 	</definition>
-	
+
 	<definition name="AdminUser" extends="Default.Web">
 		<put-attribute name="body" value="/admin/user.jsp" />
 		<put-list-attribute name="js">
-		<add-attribute value="/js/userAdmin.js"/>
+			<add-attribute value="/js/userAdmin.js" />
 		</put-list-attribute>
 		<put-list-attribute name="css">
-		<add-attribute value="/css/admin.css"/>
+			<add-attribute value="/css/admin.css" />
 		</put-list-attribute>
 	</definition>
-	
+
 	<definition name="AdminLogIn" extends="Default.Web">
 		<put-attribute name="body" value="/admin/login.jsp" />
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">
-		<add-attribute value="/css/login.css"/>
+			<add-attribute value="/css/login.css" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="AdminSignUp" extends="Default.Web">
+		<put-attribute name="body" value="/admin/signup.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+		<add-attribute value="/css/admin.css" />
 		</put-list-attribute>
 	</definition>
 </tiles-definitions>

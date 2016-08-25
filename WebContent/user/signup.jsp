@@ -10,7 +10,7 @@
         <span id="reauth-email" class="reauth-email"></span>
         <input type="email" id="inputEmail" name="user.email" class="form-control" 
         placeholder="Email address" required autofocus>
-        <input type="text" id="inputUsername" name="user.username"class="form-control" 
+        <input type="text" id="inputUsername" name="user.username" class="form-control" 
         placeholder="Username" required autofocus>
         <input type="password" id="inputPassword" name="user.password" class="form-control" 
         placeholder="Password" required>
