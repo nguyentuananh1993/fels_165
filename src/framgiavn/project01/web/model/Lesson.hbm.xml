@@ -8,7 +8,7 @@
 		dynamic-insert="true" dynamic-update="true">
 		<id name="lesson_id" type="java.lang.Integer">
 			<column name="lesson_id" length="10" />
-			<generator class="assigned" />
+			<generator class="identity" />
 		</id>
 
 		<property name="user_id" type="java.lang.Integer">

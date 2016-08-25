@@ -237,7 +237,7 @@ public class LessonAction extends ActionSupport implements SessionAware {
 			int n = (int)session.get("category_id");
 			this.setCategory_id(n);
 			category_id = n;
-/*			int res = 0;
+			int res = 0;
 			for(int i = 0; i < result.size(); i++){
 				if(result.get(i) == true)
 					res++;
@@ -251,6 +251,8 @@ public class LessonAction extends ActionSupport implements SessionAware {
 			for(int i = 0; i < choice.size(); i++) {
 				lessonWord.setLesson_id(id);
 				lessonWord.setWord_id(question.get(i).getWord_id());
+				int a = choice.get(i).getWord_answer_id();
+				System.out.println(a);
 				lessonWord.setWord_answer_id(choice.get(i).getWord_answer_id());
 				lessonWordBusiness.saveLessonWord(lessonWord);
 			}
@@ -261,7 +263,7 @@ public class LessonAction extends ActionSupport implements SessionAware {
 			activity.setAction_type("LEARN");
 			activityBusiness.saveActivity(activity);
 
-*/			session.remove("count");
+			session.remove("count");
 			session.remove("word");
 			session.remove("listAnswer");
 			session.remove("question");

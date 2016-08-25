@@ -29,7 +29,9 @@
 		scope="prototype">
 		<property name="lessonBusiness" ref="LessonBusiness" />
 		<property name="wordBusiness" ref="WordBusiness" />		
+		<property name="lessonWordBusiness" ref="LessonWordBusiness" />
 		<property name="wordAnswerBusiness" ref="WordAnswerBusiness" />
+		<property name="activityBusiness" ref="ActivityBusiness" />
 	</bean>
 
 	<!-- ================== LESSON WORD MODULE ================== -->
