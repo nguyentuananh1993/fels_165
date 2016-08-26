@@ -8,7 +8,7 @@
 	</div>
 	<!-- USER PROFILE ROW STARTS-->
 	<div class="row">
-		<div class="col-md-3 col-sm-3">
+		<div class="col-md-4 col-sm-4">
 			<div class="user-wrapper">
 				<img src="..<s:property value='user.avatar'/>" />
 				<div class="description">
@@ -20,10 +20,12 @@
 						</strong>
 					</h5>
 					<hr>
-					<a href="#" class="btn btn-danger btn-sm"> <i
-						class="fa fa-font"></i> &nbsp;Words
-					</a> <a href="#" class="btn btn-danger btn-sm"> <i
-						class="fa fa-list"></i> &nbsp;Lession
+					<a href="<s:url value="/user/editProfile"/>"
+						class="btn btn-danger btn-sm"> <i class="fa fa-font"></i>
+						&nbsp; Edit Profile
+					</a> <a href="<s:url value="/user/changePassword"/>"
+						class="btn btn-danger btn-sm"> <i class="fa fa-font"></i>
+						&nbsp; Change PassWord
 					</a>
 				</div>
 			</div>

@@ -17,7 +17,7 @@
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">
-		<add-attribute value="/css/login.css"/>
+			<add-attribute value="/css/login.css" />
 		</put-list-attribute>
 	</definition>
 
@@ -26,15 +26,25 @@
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">
-		<add-attribute value="/css/login.css"/>
+			<add-attribute value="/css/login.css" />
 		</put-list-attribute>
 	</definition>
+	<definition name="User.ChangePassword" extends="Default.Web">
+		<put-attribute name="body" value="/user/change_password.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+			<add-attribute value="/css/login.css" />
+		</put-list-attribute>
+	</definition>
+
 
 	<definition name="User.Profile" extends="Default.Web">
 		<put-attribute name="body" value="/user/profile.jsp" />
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">
+			<add-attribute value="/css/login.css" />
 		</put-list-attribute>
 	</definition>
 	<definition name="User.ShowProfile" extends="Default.Web">
