@@ -52,8 +52,8 @@
 									<td><input id="reinputPassword" name="passwordConfirm"
 										class="form-control" type="password" autofocus="" required=""
 										placeholder="Re-enter Password"></td>
-
 								</tr>
+								<s:checkbox name="user.isAdmin" label="Admin permission"/>
 							</tbody>
 						</table>
 						<div class="col-sm-12 col-md-12">

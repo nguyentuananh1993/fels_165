@@ -60,5 +60,15 @@
 				<param name="location">/admin/user</param>
 			</result>
 		</action>
+		<action name="word" class="springWordAction" method="adminWordList">
+			<result name="success">AdminWordList</result>
+			<result name="error">AdminLogIn</result>
+		</action>
+		
+		<action name="category" class="springCategoryAction" method="adminCategoryList">
+			<result name="success">AdminCategoryList</result>
+			<result name="error">AdminLogIn</result>
+		</action>
+		
 	</package>
 </struts>

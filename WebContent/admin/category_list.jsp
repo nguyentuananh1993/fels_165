@@ -1,10 +1,11 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- CONTAINER START-->
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 text-center">
-			<h2>USER LISTS</h2>
+			<h2>CATEGORY LISTS</h2>
 			<br> <br>
 		</div>
 	</div>
@@ -16,9 +17,9 @@
 					<li class="menu-item"><a
 						href="<s:url value="/admin/"/>">Home</a></li>
 					<li class="menu-item"><a href="<s:url value="/admin/word"/>">Words</a></li>
-					<li class="menu-item"><a
+					<li class="menu-item menu-selected"><a
 						href="<s:url value="/admin/category"/>">Category</a></li>
-					<li class="menu-item menu-selected"><a href="<s:url value="/admin/user"/>">Users</a></li>
+					<li class="menu-item"><a href="<s:url value="/admin/user"/>">Users</a></li>
 				</ul>
 			</div>
 		</div>
@@ -48,29 +49,24 @@
 							<thead>
 								<tr style="">
 									<th>ID</th>
-									<th style="width: 200px;">Username</th>
-									<th style="width: 350px;">Email</th>
-									<th style="width: 150px;">User Type</th>
+									<th style="width: 200px;">Name</th>
+									<th style="width: 200px;">Words</th>
+									<th style="width: 150px;">Created At</th>
+									<th style="width: 150px;">Updated At</th>
 									<th class="text-center" style="width: 300px;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<s:iterator value="listUsers">
+								<s:iterator value="listCategory">
 									<tr>
-										<td>${user_id }</td>
-										<td>${username }</td>
-										<td>${email }</td>
-										<td class="text-center"><c:choose>
-												<c:when test="${isAdmin }">
-													<span class="label label-danger">Admin</span>
-												</c:when>
-												<c:otherwise>
-													<span class="label label-success">User</span>
-												</c:otherwise>
-											</c:choose></td>
-										<td><a href="<s:url value="/admin/userEdit"/>${user_id}" class="btn btn-warning"> <i
+										<td>${category_id }</td>
+										<td>${name }</td>
+										<td>400</td>
+										<td><fmt:formatDate value="${created_at }" pattern="yyyy-MM-dd" /></td>
+										<td><fmt:formatDate value="${updated_at }" pattern="yyyy-MM-dd" /></td>
+										<td><a href="<s:url value="/admin/categoryEdit"/>${user_id}" class="btn btn-warning"> <i
 												class="fa fa-edit"></i>&nbsp; Edit
-										</a> <a href="<s:url value="/admin/userDelete"/>${user_id}"
+										</a> <a href="<s:url value="/admin/categoryDelete"/>${user_id}"
 											class="btn btn-danger" onclick="return confirmDelete();">
 												<i class="fa fa-remove"></i>&nbsp; Delete
 										</a></td>

@@ -90,6 +90,11 @@ public class WordAction extends ActionSupport implements SessionAware {
 		this.session = (SessionMap) session;
 	}
 
+	public boolean compare(String a, String b) {
+
+		return a.equals(b);
+	}
+
 	public String findWordByCategory() {
 		Word word;
 		WordAnswer wordAnswer;
@@ -116,8 +121,7 @@ public class WordAction extends ActionSupport implements SessionAware {
 		return ERROR;
 	}
 
-	public boolean compare(String a, String b) {
-
-		return a.equals(b);
+	public String adminWordList() {
+		return SUCCESS;
 	}
 }

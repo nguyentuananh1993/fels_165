@@ -26,6 +26,7 @@
 	<bean id="springCategoryAction" class="framgiavn.project01.web.action.CategoryAction"
 		scope="prototype">
 		<property name="categoryBusiness" ref="CategoryBusiness" />
+		<property name="userBusiness" ref="UserBusiness" />
 	</bean>
 
 	<!-- ================== LESSON MODULE ================== -->

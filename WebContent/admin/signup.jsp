@@ -53,6 +53,7 @@
 										placeholder="Re-enter Password"></td>
 
 								</tr>
+								<s:checkbox name="user.isAdmin" label="Admin permission"/>
 							</tbody>
 						</table>
 						<div class="col-sm-12 col-md-12 text-right">
