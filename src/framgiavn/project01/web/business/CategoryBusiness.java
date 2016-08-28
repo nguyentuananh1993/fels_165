@@ -10,4 +10,6 @@ public interface CategoryBusiness {
 
 	public int findCategoryIdByName(String name) throws Exception;
 
+	public Category findCategoryById(int category_id) throws Exception;
+
 }

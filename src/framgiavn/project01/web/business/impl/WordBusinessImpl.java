@@ -1,6 +1,8 @@
 package framgiavn.project01.web.business.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import framgiavn.project01.web.business.WordBusiness;
 import framgiavn.project01.web.dao.CategoryDAO;
@@ -42,6 +44,26 @@ public class WordBusinessImpl implements WordBusiness{
 			category_id = categoryDAO.findCategoryIdByName(name);
 			return wordDAO.wordFilterByCategory(category_id);
 		} catch (Exception e){
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	
+	@Override
+	public List<Word> initWordList(int category_id) throws Exception {
+		try {
+			List<Word> list;
+			list = wordDAO.wordFilterByCategory(category_id);
+			List<Word> result = new ArrayList<Word>();
+			for (int i = 0; i < 20; i++) {
+				int randomIndex = (int) (Math.random() * list.size());
+				Word word = list.get(randomIndex);
+				result.add(i, word);
+			}
+			return result;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
 		}

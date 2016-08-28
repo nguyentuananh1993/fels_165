@@ -1,7 +1,7 @@
 package framgiavn.project01.web.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class Lesson implements Serializable{
 	private static final long serialVersionUID = 1L;

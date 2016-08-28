@@ -34,5 +34,4 @@
 		where word.category_id =
 		:category_id
 	</query>
-
 </hibernate-mapping>

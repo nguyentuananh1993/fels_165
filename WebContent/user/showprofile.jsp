@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 text-center">
@@ -30,7 +31,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-9 col-sm-9  user-wrapper"></div>
+		<div class="col-md-9 col-sm-9  user-wrapper">
+			<c:forEach items="${listActivity}" varStatus="loop">
+				Learn 20 words from category <c:out value="${listCategory[loop.index].name}" />	at <c:out value="${listActivity[loop.index].created_at}" /><br>
+			</c:forEach>
+		</div>
 		<!-- USER PROFILE ROW END-->
 	</div>
 </div>
