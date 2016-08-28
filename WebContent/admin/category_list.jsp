@@ -26,19 +26,19 @@
 		<div class="col-md-9 col-sm-9 user-wrapper">
 			<div class="description">
 				<div class="row text-right">
-					<a href="<s:url value="/admin/userImport"/>"
-						class="btn btn-warning"> <i class="fa fa-upload"></i>&nbsp;
+					<a href="#"
+						class="btn btn-warning" onclick="return notImplementDialog();"> <i class="fa fa-upload"></i>&nbsp;
 						Import
 					</a>
-					<a href="<s:url value="/admin/userExport"/>"
-						class="btn btn-success"> <i class="fa fa-download"></i>&nbsp;
+					<a href="#"
+						class="btn btn-success"  onclick="return notImplementDialog();"> <i class="fa fa-download"></i>&nbsp;
 						Export
 					</a>
-					<a href="<s:url value="/admin/userAdd"/>"
+					<a href="<s:url value="/admin/categoryAdd"/>"
 						class="btn btn-social btn-linkedin"> <i class="fa fa-plus"></i>&nbsp;
 						Add
 					</a>
-					 <a href="<s:url value="/admin/userDeleteAll"/>"
+					 <a href="<s:url value="/admin/categoryDeleteAll"/>"
 						class="btn btn-danger" onclick="return confirmDeleteAll();"> <i
 						class="fa fa-remove"></i>&nbsp; Delete All
 					</a>
@@ -64,9 +64,9 @@
 										<td>400</td>
 										<td><fmt:formatDate value="${created_at }" pattern="yyyy-MM-dd" /></td>
 										<td><fmt:formatDate value="${updated_at }" pattern="yyyy-MM-dd" /></td>
-										<td><a href="<s:url value="/admin/categoryEdit"/>${user_id}" class="btn btn-warning"> <i
+										<td><a href="<s:url value="/admin/categoryEdit"/>${category_id}" class="btn btn-warning"> <i
 												class="fa fa-edit"></i>&nbsp; Edit
-										</a> <a href="<s:url value="/admin/categoryDelete"/>${user_id}"
+										</a> <a href="<s:url value="/admin/categoryDelete"/>${category_id}"
 											class="btn btn-danger" onclick="return confirmDelete();">
 												<i class="fa fa-remove"></i>&nbsp; Delete
 										</a></td>

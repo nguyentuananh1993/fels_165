@@ -20,7 +20,7 @@
 			<result name="success">AdminUser</result>
 			<result name="error">AdminLogIn</result>
 		</action>
-		
+
 		<action name="userDelete*" class="springAdminAction" method="adminDeleteUser">
 			<param name="user.user_id">{1}</param>
 			<result name="success">AdminUser</result>
@@ -67,7 +67,7 @@
 			<result name="success">AdminWordList</result>
 			<result name="error">AdminLogIn</result>
 		</action>
-		
+
 		<action name="wordEdit*" class="springWordAction" method="adminWordEdit">
 			<param name="word.word_id">{1}</param>
 			<result name="error" type="redirect">
@@ -75,14 +75,14 @@
 			</result>
 			<result name="success">AdminWordEdit</result>
 		</action>
-		
+
 		<action name="actionWordEdit" class="springWordAction" method="actionAdminWordEdit">
 			<result name="error">AdminWordList</result>
 			<result name="success" type="redirect">
 				<param name="location">/admin/word</param>
 			</result>
 		</action>
-		
+
 		<action name="wordDelete*" class="springWordAction" method="adminWordDelete">
 			<param name="word.word_id">{1}</param>
 			<result name="success">AdminWordList</result>
@@ -111,10 +111,59 @@
 				<param name="location">/admin/word</param>
 			</result>
 		</action>
+		<!-- ================== CATEGORY MODULE ================== -->
 		<action name="category" class="springCategoryAction" method="adminCategoryList">
 			<result name="success">AdminCategoryList</result>
 			<result name="error">AdminLogIn</result>
 		</action>
-		
+
+		<action name="categoryEdit*" class="springCategoryAction"
+			method="adminCategoryEdit">
+			<param name="category.category_id">{1}</param>
+			<result name="error" type="redirect">
+				<param name="location">/admin/category</param>
+			</result>
+			<result name="success">AdminCategoryEdit</result>
+		</action>
+
+		<action name="actionCategoryEdit" class="springCategoryAction"
+			method="actionAdminCategoryEdit">
+			<result name="error">AdminCategoryList</result>
+			<result name="success" type="redirect">
+				<param name="location">/admin/category</param>
+			</result>
+		</action>
+
+		<action name="categoryDelete*" class="springCategoryAction"
+			method="adminCategoryDelete">
+			<param name="category.category_id">{1}</param>
+			<result name="success">AdminCategoryList</result>
+			<result name="error">AdminLogIn</result>
+			<result name="finish" type="redirect">
+				<param name="location">/admin/category</param>
+			</result>
+		</action>
+
+		<action name="categoryAdd" class="springCategoryAction" method="adminCategoryAdd">
+			<result name="success">AdminCategoryAdd</result>
+			<result name="error">AdminCategoryList</result>
+		</action>
+
+		<action name="actionCategoryAdd" class="springCategoryAction"
+			method="actionAdminCategoryAdd">
+			<result name="error">AdminCategoryList</result>
+			<result name="success" type="redirect">
+				<param name="location">/admin/category</param>
+			</result>
+		</action>
+
+		<action name="categoryDeleteAll" class="springCategoryAction"
+			method="adminCategoryDeleteAll">
+			<result name="success">AdminCategoryList</result>
+			<result name="error">AdminLogIn</result>
+			<result name="finish" type="redirect">
+				<param name="location">/admin/category</param>
+			</result>
+		</action>
 	</package>
 </struts>

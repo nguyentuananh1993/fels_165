@@ -34,5 +34,15 @@
 		select category
 		from Category category
 	</query>
-
+	<query name="Category.findById">
+		select category
+		from Category category
+		where category.category_id = :category_id
+	</query>
+	
+	<query name="Category.listAllCategory">
+		select category
+		from Category category
+	</query>
+	
 </hibernate-mapping>

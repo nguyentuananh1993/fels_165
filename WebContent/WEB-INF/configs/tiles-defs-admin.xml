@@ -60,7 +60,7 @@
 			<add-attribute value="/css/admin.css" />
 		</put-list-attribute>
 	</definition>
-	
+
 	<definition name="AdminWordNew" extends="Default.Web">
 		<put-attribute name="body" value="/admin/word_new.jsp" />
 		<put-list-attribute name="js">
@@ -70,7 +70,7 @@
 			<add-attribute value="/css/admin.css" />
 		</put-list-attribute>
 	</definition>
-	
+
 	<definition name="AdminWordEdit" extends="Default.Web">
 		<put-attribute name="body" value="/admin/word_edit.jsp" />
 		<put-list-attribute name="js">
@@ -99,5 +99,33 @@
 		</put-list-attribute>
 	</definition>
 
+	<definition name="AdminCategoryNew" extends="Default.Web">
+		<put-attribute name="body" value="/admin/category_new.jsp" />
+		<put-list-attribute name="js">
+			<add-attribute value="/js/categoryList.js" />
+		</put-list-attribute>
+		<put-list-attribute name="css">
+			<add-attribute value="/css/admin.css" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="AdminCategoryEdit" extends="Default.Web">
+		<put-attribute name="body" value="/admin/category_edit.jsp" />
+		<put-list-attribute name="js">
+			<add-attribute value="/js/categoryList.js" />
+		</put-list-attribute>
+		<put-list-attribute name="css">
+			<add-attribute value="/css/admin.css" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="AdminCategoryAdd" extends="Default.Web">
+		<put-attribute name="body" value="/admin/category_new.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+			<add-attribute value="/css/admin.css" />
+		</put-list-attribute>
+	</definition>
 
 </tiles-definitions>

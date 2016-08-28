@@ -1,5 +1,6 @@
 package framgiavn.project01.web.action;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,8 @@ import org.springframework.web.context.ServletContextAware;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.net.httpserver.Authenticator.Success;
+
 import framgiavn.project01.web.model.Category;
 import framgiavn.project01.web.model.User;
 import framgiavn.project01.web.business.CategoryBusiness;
@@ -21,13 +24,30 @@ public class CategoryAction extends ActionSupport implements SessionAware, Servl
 	private ServletContext context;
 	private UserBusiness userBusiness = null;
 	private static final long serialVersionUID = 1L;
+	private Category category;
 	private CategoryBusiness categoryBusiness;
-	private CategoryAction category;
+	private CategoryAction categoryAction;
 	private List<Category> listCategory;
 	private User user;
 	private SessionMap<String, Object> session;
+	
 	public User getUser() {
 		return user;
+	}
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public CategoryAction getCategoryAction() {
+		return categoryAction;
+	}
+
+	public void setCategoryAction(CategoryAction categoryAction) {
+		this.categoryAction = categoryAction;
 	}
 	
 	private boolean checkLogIn() {
@@ -41,15 +61,8 @@ public class CategoryAction extends ActionSupport implements SessionAware, Servl
 	public void setUser(User user) {
 		this.user = user;
 	}	
-	
-	public CategoryAction getCategory() {
-		return category;
-	}
-	
-	public void setCategory(CategoryAction category) {
-		this.category = category;
-	}
-	
+
+
 	public List<Category> getListCategory() {
 		return listCategory;
 	}
@@ -112,4 +125,63 @@ public class CategoryAction extends ActionSupport implements SessionAware, Servl
 	public void setUserBusiness(UserBusiness userBusiness) {
 		this.userBusiness = userBusiness;
 	}
+	
+	public String adminCategoryEdit() {
+		try {
+			category = categoryBusiness.findCategoryById(category.getCategory_id());
+			return SUCCESS;
+		}catch(Exception e ) {
+			return ERROR;
+		}
+		
+	}
+	
+	public String actionAdminCategoryEdit() {
+		try {
+			Date date = new Date();
+			category.setUpdated_at(date);
+			categoryBusiness.editCategory(category);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+	
+	public String adminCategoryDelete() {
+		try {
+			if(categoryBusiness.deleteCategoryById(category.getCategory_id())) {
+				return "finish";
+			}
+			return ERROR;
+		}catch (Exception e) {
+			return ERROR;
+		}
+	}
+	
+	public String adminCategoryAdd() {
+		return SUCCESS;
+	}
+	
+	public String actionAdminCategoryAdd() {
+		try {
+			categoryBusiness.addCategory(category);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+	
+	public String adminCategoryDeleteAll() {
+		try {
+			categoryBusiness.deleteAllCategory();
+			return "finish";
+		} catch (Exception e) {
+			return ERROR;
+		}
+	}
+
+
+
 }

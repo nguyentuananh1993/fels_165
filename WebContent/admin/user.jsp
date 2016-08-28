@@ -25,12 +25,12 @@
 		<div class="col-md-9 col-sm-9 user-wrapper">
 			<div class="description">
 				<div class="row text-right">
-					<a href="<s:url value="/admin/userImport"/>"
-						class="btn btn-warning"> <i class="fa fa-upload"></i>&nbsp;
+					<a href="#"
+						class="btn btn-warning" onclick="return notImplementDialog();"> <i class="fa fa-upload"></i>&nbsp;
 						Import
 					</a>
-					<a href="<s:url value="/admin/userExport"/>"
-						class="btn btn-success"> <i class="fa fa-download"></i>&nbsp;
+					<a href="#"
+						class="btn btn-success" onclick="return notImplementDialog();"> <i class="fa fa-download"></i>&nbsp;
 						Export
 					</a>
 					<a href="<s:url value="/admin/userAdd"/>"
