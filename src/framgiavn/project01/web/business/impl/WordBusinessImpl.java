@@ -46,4 +46,61 @@ public class WordBusinessImpl implements WordBusiness{
 			throw e;
 		}
 	}
+
+	@Override
+	public List<Word> listAllWord() throws Exception {
+		try {
+			return wordDAO.listAllWord();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public Word findById(Integer word_id) throws Exception {
+		try {
+			return wordDAO.findById(word_id);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public Word editWord(Word word) throws Exception {
+		try {
+			getWordDAO().editWord(word);
+		} catch (Exception e) {
+			throw e;
+		}
+		return null;
+	}
+	
+	@Override
+	public boolean deleteWordById(Integer word_id) throws Exception {
+		try {
+			getWordDAO().deleteWordById(word_id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteAllWord() throws Exception {
+		try {
+			getWordDAO().deleteAllWord();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public void addWord(Word word) throws Exception {
+		try {
+			getWordDAO().addWord(word);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

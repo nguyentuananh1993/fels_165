@@ -4,7 +4,7 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<package name="Admin" namespace="/admin" extends="default-web">
-
+		<!-- ================== UTIL MODULE ================== -->
 		<action name="logIn" class="springAdminAction" method="adminLogIn">
 			<result name="input">User.LogIn</result>
 			<result name="success">AdminHomePage</result>
@@ -15,10 +15,12 @@
 			<result name="success">AdminHomePage</result>
 			<result name="error">AdminLogIn</result>
 		</action>
+		<!-- ================== USER MODULE ================== -->
 		<action name="user" class="springAdminAction" method="adminUserList">
 			<result name="success">AdminUser</result>
 			<result name="error">AdminLogIn</result>
 		</action>
+		
 		<action name="userDelete*" class="springAdminAction" method="adminDeleteUser">
 			<param name="user.user_id">{1}</param>
 			<result name="success">AdminUser</result>
@@ -60,11 +62,55 @@
 				<param name="location">/admin/user</param>
 			</result>
 		</action>
+		<!-- ================== WORD MODULE ================== -->
 		<action name="word" class="springWordAction" method="adminWordList">
 			<result name="success">AdminWordList</result>
 			<result name="error">AdminLogIn</result>
 		</action>
 		
+		<action name="wordEdit*" class="springWordAction" method="adminWordEdit">
+			<param name="word.word_id">{1}</param>
+			<result name="error" type="redirect">
+				<param name="location">/admin/word</param>
+			</result>
+			<result name="success">AdminWordEdit</result>
+		</action>
+		
+		<action name="actionWordEdit" class="springWordAction" method="actionAdminWordEdit">
+			<result name="error">AdminWordList</result>
+			<result name="success" type="redirect">
+				<param name="location">/admin/word</param>
+			</result>
+		</action>
+		
+		<action name="wordDelete*" class="springWordAction" method="adminWordDelete">
+			<param name="word.word_id">{1}</param>
+			<result name="success">AdminWordList</result>
+			<result name="error">AdminLogIn</result>
+			<result name="finish" type="redirect">
+				<param name="location">/admin/word</param>
+			</result>
+		</action>
+
+		<action name="wordAdd" class="springWordAction" method="adminWordAdd">
+			<result name="success">AdminWordAdd</result>
+			<result name="error">AdminWordList</result>
+		</action>
+
+		<action name="actionWordAdd" class="springWordAction" method="actionAdminWordAdd">
+			<result name="error">AdminWordList</result>
+			<result name="success" type="redirect">
+				<param name="location">/admin/word</param>
+			</result>
+		</action>
+
+		<action name="wordDeleteAll" class="springWordAction" method="adminUserDeleteAll">
+			<result name="success">AdminWordList</result>
+			<result name="error">AdminLogIn</result>
+			<result name="finish" type="redirect">
+				<param name="location">/admin/word</param>
+			</result>
+		</action>
 		<action name="category" class="springCategoryAction" method="adminCategoryList">
 			<result name="success">AdminCategoryList</result>
 			<result name="error">AdminLogIn</result>

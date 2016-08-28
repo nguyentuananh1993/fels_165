@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 text-center">
-			<h2>WORD CATEGORY</h2>
+			<h2>USER</h2>
 			<br> <br>
 		</div>
 	</div>
@@ -59,7 +59,7 @@
 						<div class="col-sm-12 col-md-12">
 							<div class="col-sm-9 col-md-9"></div>
 							<div class="col-sm-3 col-md-3">
-							<button class="col-sm-3 col-md-3 btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign up</button>
+							<button class="col-sm-3 col-md-3 btn btn-lg btn-primary btn-block btn-signin" type="submit">Edit</button>
 							</div>
 						 	</div>
 					</form>

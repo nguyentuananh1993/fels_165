@@ -21,6 +21,7 @@ public class WordAction extends ActionSupport implements SessionAware {
 	private static final long serialVersionUID = 1L;
 	private WordBusiness wordBusiness = null;
 	private List<Word> listWord = null;
+	private Word word;
 	private String category = "Newbie";
 	private SessionMap session = null;
 	private List<Category> listCategory = null;
@@ -28,6 +29,12 @@ public class WordAction extends ActionSupport implements SessionAware {
 	private Map<Word, WordAnswer> mapWord = null;
 	private WordAnswerBusiness wordAnswerBusiness = null;
 
+	public Word getWord() {
+		return word;
+	}
+	public void setWord(Word word) {
+		this.word = word;
+	}
 	public CategoryBusiness getCategoryBusiness() {
 		return categoryBusiness;
 	}
@@ -122,6 +129,78 @@ public class WordAction extends ActionSupport implements SessionAware {
 	}
 
 	public String adminWordList() {
+		try {
+			listWord = wordBusiness.listAllWord();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return SUCCESS;
+	}
+	
+	public String adminWordEdit() {
+		try {
+			word = wordBusiness.findById(word.getWord_id());
+			return SUCCESS;
+		} catch (Exception e) {
+			return ERROR;
+		}
+	}
+	
+	public String actionAdminWordEdit() {
+		try {
+			wordBusiness.editWord(word);
+			if(word.getContent() == null){
+				return ERROR;
+			} else {
+				return SUCCESS;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+		
+	}
+	public String adminWordDelete() {
+		try {
+			if(wordBusiness.deleteWordById(word.getWord_id())) {
+				return "finish";
+			}
+			return ERROR;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ERROR;
+	}
+	public String adminWordAdd() {
+		return SUCCESS;
+	}
+	public String actionAdminWordAdd() {
+		try {
+			if(validateAddWord(word)) {
+				wordBusiness.addWord(word);
+				return SUCCESS;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+
+	public boolean validateAddWord(Word word) {
+		if(word.getContent() == null || word.getCategory_id() == 0) {
+			return false;
+		}
+		return true;
+	}
+	public String adminUserDeleteAll() {
+		try {
+			wordBusiness.deleteAllWord();
+			return "finish";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ERROR;
 	}
 }
