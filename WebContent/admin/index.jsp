@@ -22,7 +22,9 @@
       </div>
       <div class="col-md-9 col-sm-9 user-wrapper">
          <div class="row">
-           <div class="col-md-12 col-sm-12"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+           <div class="col-md-12 col-sm-12 text-center">
+           <h2>UNDER DESTRUCTION</h2>
+           <img alt="" src="../images/admin-background.jpg">
            </div>
          </div>
       </div>

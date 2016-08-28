@@ -5,29 +5,51 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.web.context.ServletContextAware;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import framgiavn.project01.web.business.CategoryBusiness;
+import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.business.WordAnswerBusiness;
 import framgiavn.project01.web.business.WordBusiness;
 import framgiavn.project01.web.model.Category;
+import framgiavn.project01.web.model.User;
 import framgiavn.project01.web.model.Word;
 import framgiavn.project01.web.model.WordAnswer;
 
-public class WordAction extends ActionSupport implements SessionAware {
+public class WordAction extends ActionSupport implements SessionAware, ServletContextAware {
 	private static final long serialVersionUID = 1L;
+	private ServletContext context;
 	private WordBusiness wordBusiness = null;
 	private List<Word> listWord = null;
 	private Word word;
+	private UserBusiness userBusiness;
 	private String category = "Newbie";
-	private SessionMap session = null;
+	private SessionMap<String, Object> session;
 	private List<Category> listCategory = null;
 	private CategoryBusiness categoryBusiness = null;
 	private Map<Word, WordAnswer> mapWord = null;
 	private WordAnswerBusiness wordAnswerBusiness = null;
+
+	@Override
+	public void setServletContext(ServletContext arg0) {
+		// TODO Auto-generated method stub
+		this.context = arg0;
+	}
+
+	public SessionMap<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(SessionMap<String, Object> session) {
+		this.session = (SessionMap<String, Object>) session;
+	}
 
 	public Word getWord() {
 		return word;
@@ -101,7 +123,20 @@ public class WordAction extends ActionSupport implements SessionAware {
 
 		return a.equals(b);
 	}
+	public UserBusiness getUserBusiness() {
+		return userBusiness;
+	}
+	public void setUserBusiness(UserBusiness userBusiness) {
+		this.userBusiness = userBusiness;
+	}
 
+	private boolean checkLogIn() {
+		User userLogin = (User)ActionContext.getContext().getSession().get("user");
+		if(userLogin != null && userLogin.getIsAdmin()) {
+			return true;
+		}
+		return false;
+	}
 	public String findWordByCategory() {
 		Word word;
 		WordAnswer wordAnswer;
@@ -129,6 +164,9 @@ public class WordAction extends ActionSupport implements SessionAware {
 	}
 
 	public String adminWordList() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
 		try {
 			listWord = wordBusiness.listAllWord();
 		} catch (Exception e) {
@@ -139,6 +177,9 @@ public class WordAction extends ActionSupport implements SessionAware {
 	}
 	
 	public String adminWordEdit() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
 		try {
 			word = wordBusiness.findById(word.getWord_id());
 			return SUCCESS;
@@ -148,6 +189,9 @@ public class WordAction extends ActionSupport implements SessionAware {
 	}
 	
 	public String actionAdminWordEdit() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
 		try {
 			wordBusiness.editWord(word);
 			if(word.getContent() == null){
@@ -162,6 +206,9 @@ public class WordAction extends ActionSupport implements SessionAware {
 		
 	}
 	public String adminWordDelete() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
 		try {
 			if(wordBusiness.deleteWordById(word.getWord_id())) {
 				return "finish";
@@ -173,9 +220,15 @@ public class WordAction extends ActionSupport implements SessionAware {
 		return ERROR;
 	}
 	public String adminWordAdd() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
 		return SUCCESS;
 	}
 	public String actionAdminWordAdd() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
 		try {
 			if(validateAddWord(word)) {
 				wordBusiness.addWord(word);
@@ -195,6 +248,9 @@ public class WordAction extends ActionSupport implements SessionAware {
 		return true;
 	}
 	public String adminUserDeleteAll() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
 		try {
 			wordBusiness.deleteAllWord();
 			return "finish";

@@ -127,6 +127,10 @@ public class CategoryAction extends ActionSupport implements SessionAware, Servl
 	}
 	
 	public String adminCategoryEdit() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		
 		try {
 			category = categoryBusiness.findCategoryById(category.getCategory_id());
 			return SUCCESS;
@@ -137,6 +141,10 @@ public class CategoryAction extends ActionSupport implements SessionAware, Servl
 	}
 	
 	public String actionAdminCategoryEdit() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		
 		try {
 			Date date = new Date();
 			category.setUpdated_at(date);
@@ -149,6 +157,10 @@ public class CategoryAction extends ActionSupport implements SessionAware, Servl
 	}
 	
 	public String adminCategoryDelete() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		
 		try {
 			if(categoryBusiness.deleteCategoryById(category.getCategory_id())) {
 				return "finish";
@@ -160,10 +172,18 @@ public class CategoryAction extends ActionSupport implements SessionAware, Servl
 	}
 	
 	public String adminCategoryAdd() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		
 		return SUCCESS;
 	}
 	
 	public String actionAdminCategoryAdd() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		
 		try {
 			categoryBusiness.addCategory(category);
 			return SUCCESS;
@@ -174,6 +194,10 @@ public class CategoryAction extends ActionSupport implements SessionAware, Servl
 	}
 	
 	public String adminCategoryDeleteAll() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		
 		try {
 			categoryBusiness.deleteAllCategory();
 			return "finish";
