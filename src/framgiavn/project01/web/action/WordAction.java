@@ -92,7 +92,7 @@ public class WordAction extends ActionSupport implements SessionAware {
 
 	public String findWordByCategory() {
 		Word word;
-		WordAnswer wordAnswer;
+		WordAnswer wordAnswer = null;
 		Iterator listWordIterator;
 		mapWord = new HashMap<Word, WordAnswer>();
 		try {
