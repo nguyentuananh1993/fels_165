@@ -38,4 +38,14 @@ public class CategoryBusinessImpl implements CategoryBusiness {
 		}
 	}
 
+	@Override
+	public Category findCategoryById(int category_id) throws Exception{
+		try {
+			return categoryDAO.findCategoryById(category_id);
+		} catch (Exception e){
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
 }
