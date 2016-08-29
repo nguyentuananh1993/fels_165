@@ -2,9 +2,6 @@ package framgiavn.project01.web.business.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-import bsh.org.objectweb.asm.Type;
 import framgiavn.project01.web.business.WordBusiness;
 import framgiavn.project01.web.dao.CategoryDAO;
 import framgiavn.project01.web.dao.WordDAO;
@@ -80,8 +77,64 @@ public class WordBusinessImpl implements WordBusiness {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public List<Word> listAllWord() throws Exception {
+		try {
+			return wordDAO.listAllWord();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public Word findById(Integer word_id) throws Exception {
+		try {
+			return wordDAO.findById(word_id);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public Word editWord(Word word) throws Exception {
+		try {
+			getWordDAO().editWord(word);
+		} catch (Exception e) {
 			throw e;
 		}
 		return null;
 	}
+
+	@Override
+	public boolean deleteWordById(Integer word_id) throws Exception {
+		try {
+			getWordDAO().deleteWordById(word_id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteAllWord() throws Exception {
+		try {
+			getWordDAO().deleteAllWord();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public void addWord(Word word) throws Exception {
+		try {
+			getWordDAO().addWord(word);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

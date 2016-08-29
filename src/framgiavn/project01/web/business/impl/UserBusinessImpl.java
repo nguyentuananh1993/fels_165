@@ -1,5 +1,7 @@
 package framgiavn.project01.web.business.impl;
 
+import java.util.List;
+
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.dao.UserDAO;
 import framgiavn.project01.web.model.User;
@@ -75,4 +77,36 @@ public class UserBusinessImpl implements UserBusiness {
 			throw e;
 		}
 	}
+
+	@Override
+	public List<User> listAllUsers() throws Exception {
+		try {
+			return getUserDAO().listAllUsers();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public boolean deleteUser(Integer user_id) throws Exception {
+		try {
+			return getUserDAO().deleteUser(user_id);	
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public boolean deleteAllUser() throws Exception {
+		try {
+			return getUserDAO().deleteAllUser();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		// TODO Auto-generated method stub
+	}
+
 }

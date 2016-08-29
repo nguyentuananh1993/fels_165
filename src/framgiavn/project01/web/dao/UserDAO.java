@@ -1,5 +1,8 @@
 package framgiavn.project01.web.dao;
 
+import java.util.List;
+
+import framgiavn.project01.web.model.Category;
 import framgiavn.project01.web.model.User;
 
 public interface UserDAO {
@@ -14,4 +17,10 @@ public interface UserDAO {
 	public User logIn(String username, String password) throws Exception;
 
 	public void editProfile(User user);
+	
+	public List<User> listAllUsers() throws Exception;
+	
+	public boolean deleteUser(Integer user_id) throws Exception;
+	
+	public boolean deleteAllUser() throws Exception;
 }

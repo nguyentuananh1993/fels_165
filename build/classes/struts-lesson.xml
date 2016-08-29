@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Lesson" namespace="/lesson" extends="default-web">
+		
+		<action name="learnLesson*" class="springLessonAction" method="learnLesson">
+			<param name="category_id">{1}</param>
+			<result name="success">Learn</result>
+			<result name="error">HomePage</result>
+			<result name="finish" type="redirect">
+				<param name="location">/lesson/endLearning.action</param>
+			</result>
+		</action>
+
+		<action name="endLearning" class="springLessonAction" method="endLearning">
+			<result name="success">Result</result>
+			<result name="error">HomePage</result>
+		</action>
+		
+	</package>
+</struts>

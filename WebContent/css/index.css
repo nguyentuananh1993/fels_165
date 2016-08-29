@@ -17,6 +17,10 @@ body {
   opacity: 0.5;
 }
 
+.user-wrapper {
+	background-color: #fff;
+	margin-bottom: 40px;
+}
 .user-wrapper .btn {
   border-radius: 0;
   margin: 5px;
@@ -91,9 +95,7 @@ code {
 }
 
 .menu-item {
-  padding: 20px;
   border-bottom: 1px solid #D7D6D3;
-  padding: 20px 20px 20px 40px;
 
 }
 

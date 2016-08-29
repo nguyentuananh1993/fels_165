@@ -34,10 +34,21 @@
 		where word.category_id =
 		:category_id
 	</query>
+
 	<query name="Word.WordFilterByLearnedWord">
 	 select distinct word 
 	 from Word word
 	 where word.category_id  = :category_id
 	</query>
+	
+	<query name="Word.listAllWord">
+		select word
+		from Word word
+	</query>
 
+	<query name="Word.findById">
+		select word
+		from Word word
+		where word.word_id = :word_id
+	</query>
 </hibernate-mapping>
