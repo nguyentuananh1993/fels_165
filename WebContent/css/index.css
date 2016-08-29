@@ -17,6 +17,11 @@ body {
   opacity: 0.5;
 }
 
+.container.home-page {
+  background: #fff url('./../images/splash-background.jpg') no-repeat;
+  height: 100%;
+}
+
 .user-wrapper {
 	background-color: #fff;
 	margin-bottom: 40px;
