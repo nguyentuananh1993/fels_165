@@ -42,8 +42,8 @@
         	,/WEB-INF/configs/tiles-defs-user.xml
         	,/WEB-INF/configs/tiles-defs-category.xml
         	,/WEB-INF/configs/tiles-defs-word.xml
-<!--       	,/WEB-INF/configs/tiles-defs-lesson.xml
-        	,/WEB-INF/configs/tiles-defs-lessonword.xml
+	       	,/WEB-INF/configs/tiles-defs-lesson.xml
+ <!--      	,/WEB-INF/configs/tiles-defs-lessonword.xml
         	,/WEB-INF/configs/tiles-defs-wordanswer.xml
         	,/WEB-INF/configs/tiles-defs-activity.xml
  -->    </param-value>
