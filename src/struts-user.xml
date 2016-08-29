@@ -28,8 +28,7 @@
 		</action>
 
 		<action name="logIn" class="springUserAction" method="logIn">
-			<result name="input">User.LogIn</result>
-			<result name="success">User.ShowProfile</result>
+			<result name="success">User.Info</result>
 			<result name="error">User.LogIn</result>
 		</action>
 
@@ -49,7 +48,7 @@
 			<result name="success">User.ShowProfile</result>
 		</action>
 		<action name="signOut" class="springUserAction" method="signOut">
-			<result name="success">User.Info</result>
+			<result name="success">HomeScreen</result>
 		</action>
 	</package>
 </struts>

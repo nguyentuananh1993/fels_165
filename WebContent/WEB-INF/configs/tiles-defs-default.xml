@@ -14,6 +14,7 @@
 			<add-attribute value="/css/bootstrap.min.css"/>
 			<add-attribute value="/css/index.css"/>
 			<add-attribute value="/css/jquery-ui.css" />
+			<add-attribute value="/css/font-awesome.min.css" />
 			<!-- <add-attribute value="/css/main.css" /> -->
 		</put-list-attribute>
 		<put-list-attribute name="default-js">
@@ -34,6 +35,15 @@
 
 	<definition name="HomePage" extends="Default.Web">
 		<put-attribute name="body" value="/index.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+			<add-attribute value="/css/font-awesome.min.css"/>
+		</put-list-attribute>
+	</definition>
+
+	<definition name="About" extends="Default.Web">
+		<put-attribute name="body" value="/about.jsp" />
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">

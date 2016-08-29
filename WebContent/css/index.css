@@ -17,6 +17,10 @@ body {
   opacity: 0.5;
 }
 
+.user-wrapper {
+	background-color: #fff;
+	margin-bottom: 40px;
+}
 .user-wrapper .btn {
   border-radius: 0;
   margin: 5px;
@@ -84,3 +88,36 @@ html {
 code {
   font-size: 80%;
 }
+.menu-bar {
+  border-radius: 3px;
+  background-color: #fff;
+  border: 1px solid #D7D6D3;
+}
+
+.menu-item {
+  border-bottom: 1px solid #D7D6D3;
+
+}
+
+.menu-selected {
+  background-color: #DDD;
+}
+.menu-item:hover {
+  background-color: #F4F0EA;
+}
+.menu-title {
+  border-radius: 3px 3px 0px 0px;
+  border-bottom: 1px solid #D7D6D3;
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+  background-color: #6B7A80;
+  color: #fff;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
