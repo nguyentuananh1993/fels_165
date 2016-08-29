@@ -42,9 +42,12 @@
         	,/WEB-INF/configs/tiles-defs-user.xml
         	,/WEB-INF/configs/tiles-defs-category.xml
         	,/WEB-INF/configs/tiles-defs-word.xml
-        	,/WEB-INF/configs/tiles-defs-lesson.xml
+
+          	,/WEB-INF/configs/tiles-defs-lesson.xml
         	,/WEB-INF/configs/tiles-defs-admin.xml
-		</param-value>
+     	</param-value>
+
+
 	</context-param>
 	<!-- Define Tiles configuration files -->
 	<!-- Define Tiles 2 Listener -->

@@ -107,6 +107,22 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 		}
 	}
 
+
+	@Override
+	public List<User> findByKeyWord (String key) throws Exception {
+		try {
+			Query query = getSession().getNamedQuery("User.SelectUserByKeyWord");
+			query.setParameter("key", '%'+key+'%');
+			return (List<User>) query.list();
+
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+	}
+
+
+
 	@Override
 	public boolean deleteUser(Integer user_id) throws Exception {
 		try {
@@ -135,4 +151,5 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 			throw re;
 		}
 	}
+
 }

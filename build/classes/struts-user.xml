@@ -10,7 +10,7 @@
 	<package name="User" namespace="/user" extends="default-web">
 		<action name="findByUserId*" class="springUserAction" method="findByUserId">
 			<param name="user.user_id">{1}</param>
-			<result name="success">User.Info</result>
+			<result name="success">User.ShowProfile</result>
 			<result name="input">User.Info</result>
 			<result name="error">User.Info</result>
 		</action>
@@ -47,8 +47,27 @@
 		<action name="showProfile" class="springUserAction" method="showProfile">
 			<result name="success">User.ShowProfile</result>
 		</action>
+		
+		<action name="showCurrentProfile" class="springUserAction" method="showCurrentProfile">
+			<result name="success">User.ShowProfile</result>
+		</action>
+		
+		<action name="createRelationship" class="springUserAction" method="createRelationship">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showProfile</param>
+				
+			</result>
+		</action>
+
+		<action name="deleteRelationship" class="springUserAction" method="deleteRelationship">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showProfile</param>
+			</result>
+		</action>
+		
 		<action name="signOut" class="springUserAction" method="signOut">
 			<result name="success">HomeScreen</result>
 		</action>
+
 	</package>
 </struts>

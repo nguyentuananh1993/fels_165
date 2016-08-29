@@ -39,6 +39,16 @@
 		</put-list-attribute>
 		<put-list-attribute name="css">
 			<add-attribute value="/css/font-awesome.min.css"/>
+
+		</put-list-attribute>
+	</definition>
+
+	<definition name="About" extends="Default.Web">
+		<put-attribute name="body" value="/about.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+
 		</put-list-attribute>
 	</definition>
 
@@ -50,4 +60,11 @@
 		</put-list-attribute>
 	</definition>
 
+	<definition name="UserList" extends="Default.Web">
+		<put-attribute name="body" value="/userList.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+		</put-list-attribute>
+	</definition>
 </tiles-definitions>

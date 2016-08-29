@@ -12,6 +12,8 @@
 		<property name="lessonBusiness" ref="LessonBusiness" />
 		<property name="categoryBusiness" ref="CategoryBusiness" />
 
+		<property name="relationshipBusiness" ref="RelationshipBusiness"></property>
+
 	</bean>
 	<!-- ================== ADMIN MODULE ================== -->
 	<bean id="springAdminAction" class="framgiavn.project01.web.action.AdminAction"

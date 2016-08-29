@@ -14,10 +14,18 @@ import com.opensymphony.xwork2.ActionContext;
 import framgiavn.project01.web.business.ActivityBusiness;
 import framgiavn.project01.web.business.CategoryBusiness;
 import framgiavn.project01.web.business.LessonBusiness;
+<<<<<<< 157a197d9eeb52fb4cdc4ecd57e3f92c84d05f90
+=======
+import framgiavn.project01.web.business.RelationshipBusiness;
+>>>>>>> Follow User
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.model.User;
 import framgiavn.project01.web.model.Activity;
 import framgiavn.project01.web.model.Lesson;
+<<<<<<< 157a197d9eeb52fb4cdc4ecd57e3f92c84d05f90
+=======
+import framgiavn.project01.web.model.Relationship;
+>>>>>>> Follow User
 import framgiavn.project01.web.model.Category;
 
 public class UserAction extends ActionSupport implements SessionAware, ServletContextAware {
@@ -35,8 +43,17 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	private String email;
 	private String username;
 	private String password;
+	private String key;
+	private RelationshipBusiness relationshipBusiness;
 	private SessionMap<String, Object> session;
 	private ServletContext context;
+	private List<User> userList;
+	private ActivityBusiness activityBusiness;
+	private List<Activity> listActivity;
+	private List<Category> listCategory = new ArrayList<Category>();
+	private CategoryBusiness categoryBusiness;
+	private LessonBusiness lessonBusiness;
+	private String isRelated = "false";
 
 	private ActivityBusiness activityBusiness;
 	private List<Activity> listActivity;
@@ -165,9 +182,58 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 		this.lessonBusiness = lessonBusiness;
 	}
 
+<<<<<<< 157a197d9eeb52fb4cdc4ecd57e3f92c84d05f90
+=======
+	public List<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public RelationshipBusiness getRelationshipBusiness() {
+		return relationshipBusiness;
+	}
+
+	public void setRelationshipBusiness(RelationshipBusiness relationshipBusiness) {
+		this.relationshipBusiness = relationshipBusiness;
+	}
+
+	public String isRelated() {
+		return isRelated;
+	}
+
+	public void setRelated(String isRelated) {
+		this.isRelated = isRelated;
+	}
+	
+>>>>>>> Follow User
 	public String findByUserId() {
 		try {
 			user = userBusiness.findByUserId(user.getUser_id());
+			session.put("user_viewed", user.getUsername());
+			User currentUser = (User) ActionContext.getContext().getSession().get("user");
+			if(isRelated(currentUser.getUser_id(), user.getUser_id()))
+				isRelated = "true";
+			else
+				isRelated = "false";
+			session.put("isRelated", isRelated);
+			listActivity = activityBusiness.showActivity(user.getUser_id());
+			for (int i = 0; i < listActivity.size(); i++) {
+				Activity a = listActivity.get(i);
+				int category_id = lessonBusiness.getCategoryIdByLessonId(a.getTarget_id());
+				Category c = categoryBusiness.findCategoryById(category_id);
+				listCategory.add(i, c);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -238,6 +304,8 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 			user = userBusiness.logIn(user.getUsername(), user.getPassword());
 			if (user != null) {
 				session.put("user", user);
+				session.put("username", user.getUsername());
+				session.put("user_viewed", user.getUsername());
 				return SUCCESS;
 			} else {
 				System.out.println("ERROR1");
@@ -311,21 +379,101 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 		return ERROR;
 	}
 
-	public String showProfile() {
-		user = (User) ActionContext.getContext().getSession().get("user");
+	public String showProfile() throws Exception {
+		String name = (String) ActionContext.getContext().getSession().get("user_viewed");
+		User currentUser = (User) ActionContext.getContext().getSession().get("user");
+		User user_viewed = userBusiness.findByUsername(name);
+		user = user_viewed;
+		if(isRelated(currentUser.getUser_id(), user_viewed.getUser_id()))
+			isRelated = "true";
+		else
+			isRelated = "false";
+		session.put("isRelated", isRelated);
 		try {
 			listActivity = activityBusiness.showActivity(user.getUser_id());
-			for(int i = 0; i < listActivity.size(); i++){
+			for (int i = 0; i < listActivity.size(); i++) {
 				Activity a = listActivity.get(i);
 				int category_id = lessonBusiness.getCategoryIdByLessonId(a.getTarget_id());
 				Category c = categoryBusiness.findCategoryById(category_id);
 				listCategory.add(i, c);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		return SUCCESS;
+	}
+
+	public String showCurrentProfile() throws Exception {
+		user = (User) ActionContext.getContext().getSession().get("user");
+
+		session.put("username", user.getUsername());
+		session.put("user_viewed", user.getUsername());
+		try {
+			listActivity = activityBusiness.showActivity(user.getUser_id());
+			for (int i = 0; i < listActivity.size(); i++) {
+
+				Activity a = listActivity.get(i);
+				int category_id = lessonBusiness.getCategoryIdByLessonId(a.getTarget_id());
+				Category c = categoryBusiness.findCategoryById(category_id);
+				listCategory.add(i, c);
+			}
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return SUCCESS;
+	}
+	
+	public String findByKeyWord() {
+		try {
+			userList = userBusiness.findByKeyWord(this.key);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+
+	}
+
+	public String createRelationship() {
+		try {
+			Relationship r = new Relationship();
+			String name = (String) ActionContext.getContext().getSession().get("user_viewed");
+			User currentUser = (User) ActionContext.getContext().getSession().get("user");
+			User user_viewed = userBusiness.findByUsername(name);
+			user = user_viewed;
+			r.setFollower_id(currentUser.getUser_id());
+			r.setFollowing_id(user_viewed.getUser_id());
+			int relationship_id = relationshipBusiness.createRelationship(r);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return SUCCESS;
+	}
+
+	public String deleteRelationship() throws Exception {
+		try {
+			String name = (String) ActionContext.getContext().getSession().get("user_viewed");
+			User currentUser = (User) ActionContext.getContext().getSession().get("user");
+			User user_viewed = userBusiness.findByUsername(name);
+			user = user_viewed;
+			int follower_id = currentUser.getUser_id();
+			int following_id = user_viewed.getUser_id();
+			Relationship re = relationshipBusiness.deleteById(follower_id, following_id);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	public boolean isRelated(int follower_id, int following_id) throws Exception {
+		Relationship re = relationshipBusiness.findRelationshipById(follower_id, following_id);
+		if (re != null)
+			return true;
+		else
+			return false;
 	}
 
 	public String homePage() {
@@ -337,5 +485,6 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 		System.out.println("about page");
 		return SUCCESS;
 	}
+
 
 }

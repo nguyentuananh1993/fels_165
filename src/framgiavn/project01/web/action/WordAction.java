@@ -214,6 +214,7 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 			e.printStackTrace();
 		}
 		return SUCCESS;
+<<<<<<< 157a197d9eeb52fb4cdc4ecd57e3f92c84d05f90
 	}
 	
 	public String adminWordEdit() {
@@ -265,6 +266,59 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 		}
 		return SUCCESS;
 	}
+=======
+	}
+	
+	public String adminWordEdit() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		try {
+			word = wordBusiness.findById(word.getWord_id());
+			return SUCCESS;
+		} catch (Exception e) {
+			return ERROR;
+		}
+	}
+	
+	public String actionAdminWordEdit() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		try {
+			wordBusiness.editWord(word);
+			if(word.getContent() == null){
+				return ERROR;
+			} else {
+				return SUCCESS;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+		
+	}
+	public String adminWordDelete() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		try {
+			if(wordBusiness.deleteWordById(word.getWord_id())) {
+				return "finish";
+			}
+			return ERROR;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ERROR;
+	}
+	public String adminWordAdd() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+>>>>>>> Follow User
 	public String actionAdminWordAdd() {
 		if (!checkLogIn()) {
 			return ERROR;

@@ -78,6 +78,7 @@ public class UserBusinessImpl implements UserBusiness {
 		}
 	}
 
+
 	@Override
 	public List<User> listAllUsers() throws Exception {
 		try {
@@ -87,6 +88,19 @@ public class UserBusinessImpl implements UserBusiness {
 			throw e;
 		}
 	}
+
+	@Override
+	public List<User> findByKeyWord (String key) throws Exception {
+		try {
+			return (List<User>) getUserDAO().findByKeyWord(key);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+
 
 	@Override
 	public boolean deleteUser(Integer user_id) throws Exception {
@@ -108,5 +122,6 @@ public class UserBusinessImpl implements UserBusiness {
 		}
 		// TODO Auto-generated method stub
 	}
+
 
 }

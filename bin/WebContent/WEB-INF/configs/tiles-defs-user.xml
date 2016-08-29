@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="User.Info" extends="Default.Web">
+		<put-attribute name="body" value="/user/user_info.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+		</put-list-attribute>
+	</definition>
+
+	<definition name="User.SignUp" extends="Default.Web">
+		<put-attribute name="body" value="/user/signup.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+			<add-attribute value="/css/login.css" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="User.LogIn" extends="Default.Web">
+		<put-attribute name="body" value="/user/login.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+			<add-attribute value="/css/login.css" />
+		</put-list-attribute>
+	</definition>
+	<definition name="User.ChangePassword" extends="Default.Web">
+		<put-attribute name="body" value="/user/change_password.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+			<add-attribute value="/css/login.css" />
+		</put-list-attribute>
+	</definition>
+	<definition name="User.Profile" extends="Default.Web">
+		<put-attribute name="body" value="/user/profile.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+			<add-attribute value="/css/login.css" />
+		</put-list-attribute>
+	</definition>
+	<definition name="User.ShowProfile" extends="Default.Web">
+		<put-attribute name="body" value="/user/showprofile.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+		</put-list-attribute>
+	</definition>
+	<definition name="HomeScreen" extends="Default.Web">
+		<put-attribute name="body" value="/index.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+		</put-list-attribute>
+	</definition>
+
+</tiles-definitions>
