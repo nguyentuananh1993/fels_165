@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import bsh.org.objectweb.asm.Type;
 import framgiavn.project01.web.business.WordBusiness;
 import framgiavn.project01.web.dao.CategoryDAO;
 import framgiavn.project01.web.dao.WordDAO;
 import framgiavn.project01.web.model.Word;
 
-public class WordBusinessImpl implements WordBusiness{
+public class WordBusinessImpl implements WordBusiness {
 	private WordDAO wordDAO;
 	private CategoryDAO categoryDAO;
 	private int category_id;
@@ -43,12 +44,11 @@ public class WordBusinessImpl implements WordBusiness{
 		try {
 			category_id = categoryDAO.findCategoryIdByName(name);
 			return wordDAO.wordFilterByCategory(category_id);
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		}
 	}
-	
 	
 	@Override
 	public List<Word> initWordList(int category_id) throws Exception {
@@ -62,10 +62,26 @@ public class WordBusinessImpl implements WordBusiness{
 				result.add(i, word);
 			}
 			return result;
+		} catch (Exception e) {	e.printStackTrace();
+		throw e;
+	}
+}
+	public List<Word> wordFilter(String name, int type) throws Exception {
+		try {
+			category_id = categoryDAO.findCategoryIdByName(name);
+			if (type == 1) {
+				return wordDAO.wordFilterByLearnedWord(category_id);
+			}
+			if (type == 2) {
+				return wordDAO.wordFilterByNotLearnedWord(category_id);
+			}
+			if (type == 3) {
+				return wordDAO.wordFilterByCategory(category_id);
+			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
 		}
+		return null;
 	}
 }

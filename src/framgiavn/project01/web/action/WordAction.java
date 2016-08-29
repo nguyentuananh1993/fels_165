@@ -1,5 +1,6 @@
 package framgiavn.project01.web.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,12 +23,39 @@ public class WordAction extends ActionSupport implements SessionAware {
 	private WordBusiness wordBusiness = null;
 	private List<Word> listWord = null;
 	private String category = "Newbie";
+	
 	private SessionMap session = null;
 	private List<Category> listCategory = null;
 	private CategoryBusiness categoryBusiness = null;
 	private Map<Word, WordAnswer> mapWord = null;
 	private WordAnswerBusiness wordAnswerBusiness = null;
+	
+	private List<String> typefilter;
+	private static final String L ="Leaned";
+	private static final String UL ="Not Leaned";
+	private static final String A ="All";
+	private int typeCurrent = 3;
+	public int getTypeCurrent() {
+		return typeCurrent;
+	}
 
+	public void setTypeCurrent(int typeCurrent) {
+		this.typeCurrent = typeCurrent;
+	}
+
+	public int getTypePre() {
+		return typePre;
+	}
+
+	public void setTypePre(int typePre) {
+		this.typePre = typePre;
+	}
+
+	private int typePre = 3;
+
+	
+	
+	
 	public CategoryBusiness getCategoryBusiness() {
 		return categoryBusiness;
 	}
@@ -90,6 +118,38 @@ public class WordAction extends ActionSupport implements SessionAware {
 		this.session = (SessionMap) session;
 	}
 
+	public String findWord() {
+		Word word;
+		WordAnswer wordAnswer;
+		Iterator listWordIterator;
+		mapWord = new HashMap<Word, WordAnswer>();
+		typefilter = new ArrayList<>();
+		typefilter.add(L);
+		typefilter.add(UL);
+		typefilter.add(A);
+		try {
+			listCategory = categoryBusiness.listAllCategory();
+			if (category == null || category.equals("")) {
+				return SUCCESS;
+			} else {
+				System.out.println(category);
+				System.out.println("Type : " + typeCurrent);
+				listWord = wordBusiness.wordFilter(category, typeCurrent);				
+				listWordIterator = listWord.iterator();
+				while (listWordIterator.hasNext()) {
+					word = (Word) listWordIterator.next();  
+					wordAnswer = wordAnswerBusiness.selectCorrectAnswer(word.getWord_id());
+					mapWord.put(word, wordAnswer);
+				}
+				this.setTypePre(typeCurrent);
+				return SUCCESS;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return SUCCESS;
+	}
+
 	public String findWordByCategory() {
 		Word word;
 		WordAnswer wordAnswer = null;
@@ -102,6 +162,7 @@ public class WordAction extends ActionSupport implements SessionAware {
 			} else {
 				System.out.println(category);
 				listWord = wordBusiness.wordFilterByCategory(category);
+
 				listWordIterator = listWord.iterator();
 				while (listWordIterator.hasNext()) {
 					word = (Word) listWordIterator.next();
@@ -113,7 +174,17 @@ public class WordAction extends ActionSupport implements SessionAware {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return ERROR;
+		return SUCCESS;
+	}
+
+	public String showWord() {
+		try {
+			listCategory = categoryBusiness.listAllCategory();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return SUCCESS;
 	}
 
 	public boolean compare(String a, String b) {

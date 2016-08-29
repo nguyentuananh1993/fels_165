@@ -37,8 +37,6 @@
 			<add-attribute value="/css/login.css" />
 		</put-list-attribute>
 	</definition>
-
-
 	<definition name="User.Profile" extends="Default.Web">
 		<put-attribute name="body" value="/user/profile.jsp" />
 		<put-list-attribute name="js">
@@ -49,6 +47,13 @@
 	</definition>
 	<definition name="User.ShowProfile" extends="Default.Web">
 		<put-attribute name="body" value="/user/showprofile.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+		</put-list-attribute>
+	</definition>
+	<definition name="HomeScreen" extends="Default.Web">
+		<put-attribute name="body" value="/index.jsp" />
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">

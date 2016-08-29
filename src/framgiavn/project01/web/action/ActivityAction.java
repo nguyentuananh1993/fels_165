@@ -1,7 +1,6 @@
 package framgiavn.project01.web.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-
 import framgiavn.project01.web.business.ActivityBusiness;
 import framgiavn.project01.web.model.Activity;
 

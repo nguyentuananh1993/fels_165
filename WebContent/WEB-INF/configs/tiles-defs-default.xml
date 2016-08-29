@@ -37,6 +37,7 @@
 		<put-list-attribute name="js">
 		</put-list-attribute>
 		<put-list-attribute name="css">
+			<add-attribute value="/css/font-awesome.min.css"/>
 		</put-list-attribute>
 	</definition>
 

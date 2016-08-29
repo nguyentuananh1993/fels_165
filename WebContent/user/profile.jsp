@@ -1,11 +1,5 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 
-<%-- <form action="editProfile" method="post" enctype="multipart/form-data">
-      <input type="text" name="username" value="<s:property value="user.username" />"/>
-	  <input type="text" name="email" value="<s:property value="user.email"/>"/>
-      <input type="file" name="myFile" />
-      <input type="submit" value="Upload"/>
-</form> --%>
 <div class="container">
 	<div class="card editprofile">
 		<h2 class="text-center"> Edit Profile </h2>
