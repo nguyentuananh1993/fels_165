@@ -14,13 +14,6 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="<s:url value="/"/>"> FRAMGIA English Leaning</a>
-<<<<<<< 157a197d9eeb52fb4cdc4ecd57e3f92c84d05f90
-		</div>
-		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<s:url value="/"/>">HOME</a></li>
-				<li><a href="<s:url value="/about"/>">ABOUT</a></li>
-=======
 		</div>
 		<div class="col-sm-3 col-md-3 pull-left">
 			<form action="findByKeyWord" class="navbar-form" role="search">

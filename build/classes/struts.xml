@@ -28,11 +28,6 @@
 		<action name="" class="springUserAction" method="homePage">
 			<result name="success">HomePage</result>
 		</action>
-<<<<<<< 157a197d9eeb52fb4cdc4ecd57e3f92c84d05f90
-		<action name="about" class="springUserAction" method="about">
-			<result name="success">About</result>
-		</action>
-=======
 
 		<action name="about" class="springUserAction" method="about">
 			<result name="success">About</result>
@@ -41,9 +36,7 @@
 		<action name="findByKeyWord" class="springUserAction" method="findByKeyWord">
 			<result name="success">UserList</result>
 			<result name="error">HomaPage</result>
-
 		</action>
->>>>>>> Follow User
 	</package>
 
 	<!-- ===== Include Web Module Configuration ===== -->

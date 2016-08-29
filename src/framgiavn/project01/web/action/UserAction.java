@@ -14,18 +14,11 @@ import com.opensymphony.xwork2.ActionContext;
 import framgiavn.project01.web.business.ActivityBusiness;
 import framgiavn.project01.web.business.CategoryBusiness;
 import framgiavn.project01.web.business.LessonBusiness;
-<<<<<<< 157a197d9eeb52fb4cdc4ecd57e3f92c84d05f90
-=======
 import framgiavn.project01.web.business.RelationshipBusiness;
->>>>>>> Follow User
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.model.User;
 import framgiavn.project01.web.model.Activity;
-import framgiavn.project01.web.model.Lesson;
-<<<<<<< 157a197d9eeb52fb4cdc4ecd57e3f92c84d05f90
-=======
 import framgiavn.project01.web.model.Relationship;
->>>>>>> Follow User
 import framgiavn.project01.web.model.Category;
 
 public class UserAction extends ActionSupport implements SessionAware, ServletContextAware {
@@ -48,13 +41,7 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	private SessionMap<String, Object> session;
 	private ServletContext context;
 	private List<User> userList;
-	private ActivityBusiness activityBusiness;
-	private List<Activity> listActivity;
-	private List<Category> listCategory = new ArrayList<Category>();
-	private CategoryBusiness categoryBusiness;
-	private LessonBusiness lessonBusiness;
 	private String isRelated = "false";
-
 	private ActivityBusiness activityBusiness;
 	private List<Activity> listActivity;
 	private List<Category> listCategory = new ArrayList<Category>();
@@ -182,8 +169,6 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 		this.lessonBusiness = lessonBusiness;
 	}
 
-<<<<<<< 157a197d9eeb52fb4cdc4ecd57e3f92c84d05f90
-=======
 	public List<User> getUserList() {
 		return userList;
 	}
@@ -216,7 +201,6 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 		this.isRelated = isRelated;
 	}
 	
->>>>>>> Follow User
 	public String findByUserId() {
 		try {
 			user = userBusiness.findByUserId(user.getUser_id());

@@ -38,11 +38,12 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 	private Map<Word, WordAnswer> mapWord = null;
 	private WordAnswerBusiness wordAnswerBusiness = null;
 	private List<String> typefilter;
-	private static final String L ="Leaned";
-	private static final String UL ="Not Leaned";
-	private static final String A ="All";
+	private static final String L = "Leaned";
+	private static final String UL = "Not Leaned";
+	private static final String A = "All";
 	private int typeCurrent = 3;
 	private int typePre = 3;
+
 	public int getTypeCurrent() {
 		return typeCurrent;
 	}
@@ -76,6 +77,7 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 	public Word getWord() {
 		return word;
 	}
+
 	public void setWord(Word word) {
 		this.word = word;
 	}
@@ -146,16 +148,18 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 
 		return a.equals(b);
 	}
+
 	public UserBusiness getUserBusiness() {
 		return userBusiness;
 	}
+
 	public void setUserBusiness(UserBusiness userBusiness) {
 		this.userBusiness = userBusiness;
 	}
 
 	private boolean checkLogIn() {
-		User userLogin = (User)ActionContext.getContext().getSession().get("user");
-		if(userLogin != null && userLogin.getIsAdmin()) {
+		User userLogin = (User) ActionContext.getContext().getSession().get("user");
+		if (userLogin != null && userLogin.getIsAdmin()) {
 			return true;
 		}
 		return false;
@@ -177,10 +181,10 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 			} else {
 				System.out.println(category);
 				System.out.println("Type : " + typeCurrent);
-				listWord = wordBusiness.wordFilter(category, typeCurrent);				
+				listWord = wordBusiness.wordFilter(category, typeCurrent);
 				listWordIterator = listWord.iterator();
 				while (listWordIterator.hasNext()) {
-					word = (Word) listWordIterator.next();  
+					word = (Word) listWordIterator.next();
 					wordAnswer = wordAnswerBusiness.selectCorrectAnswer(word.getWord_id());
 					mapWord.put(word, wordAnswer);
 				}
@@ -214,9 +218,15 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 			e.printStackTrace();
 		}
 		return SUCCESS;
-<<<<<<< 157a197d9eeb52fb4cdc4ecd57e3f92c84d05f90
 	}
-	
+
+	public String adminWordAdd() {
+		if (!checkLogIn()) {
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+
 	public String adminWordEdit() {
 		if (!checkLogIn()) {
 			return ERROR;
@@ -228,14 +238,14 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 			return ERROR;
 		}
 	}
-	
+
 	public String actionAdminWordEdit() {
 		if (!checkLogIn()) {
 			return ERROR;
 		}
 		try {
 			wordBusiness.editWord(word);
-			if(word.getContent() == null){
+			if (word.getContent() == null) {
 				return ERROR;
 			} else {
 				return SUCCESS;
@@ -244,14 +254,15 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 			e.printStackTrace();
 			return ERROR;
 		}
-		
+
 	}
+
 	public String adminWordDelete() {
 		if (!checkLogIn()) {
 			return ERROR;
 		}
 		try {
-			if(wordBusiness.deleteWordById(word.getWord_id())) {
+			if (wordBusiness.deleteWordById(word.getWord_id())) {
 				return "finish";
 			}
 			return ERROR;
@@ -260,71 +271,13 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 		}
 		return ERROR;
 	}
-	public String adminWordAdd() {
-		if (!checkLogIn()) {
-			return ERROR;
-		}
-		return SUCCESS;
-	}
-=======
-	}
-	
-	public String adminWordEdit() {
-		if (!checkLogIn()) {
-			return ERROR;
-		}
-		try {
-			word = wordBusiness.findById(word.getWord_id());
-			return SUCCESS;
-		} catch (Exception e) {
-			return ERROR;
-		}
-	}
-	
-	public String actionAdminWordEdit() {
-		if (!checkLogIn()) {
-			return ERROR;
-		}
-		try {
-			wordBusiness.editWord(word);
-			if(word.getContent() == null){
-				return ERROR;
-			} else {
-				return SUCCESS;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ERROR;
-		}
-		
-	}
-	public String adminWordDelete() {
-		if (!checkLogIn()) {
-			return ERROR;
-		}
-		try {
-			if(wordBusiness.deleteWordById(word.getWord_id())) {
-				return "finish";
-			}
-			return ERROR;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return ERROR;
-	}
-	public String adminWordAdd() {
-		if (!checkLogIn()) {
-			return ERROR;
-		}
-		return SUCCESS;
-	}
->>>>>>> Follow User
+
 	public String actionAdminWordAdd() {
 		if (!checkLogIn()) {
 			return ERROR;
 		}
 		try {
-			if(validateAddWord(word)) {
+			if (validateAddWord(word)) {
 				wordBusiness.addWord(word);
 				return SUCCESS;
 			}
@@ -336,11 +289,12 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 	}
 
 	public boolean validateAddWord(Word word) {
-		if(word.getContent() == null || word.getCategory_id() == 0) {
+		if (word.getContent() == null || word.getCategory_id() == 0) {
 			return false;
 		}
 		return true;
 	}
+
 	public String adminUserDeleteAll() {
 		if (!checkLogIn()) {
 			return ERROR;
@@ -353,7 +307,7 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 		}
 		return ERROR;
 	}
-	
+
 	public String findWord() {
 		Word word;
 		WordAnswer wordAnswer;
@@ -370,10 +324,10 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 			} else {
 				System.out.println(category);
 				System.out.println("Type : " + typeCurrent);
-				listWord = wordBusiness.wordFilter(category, typeCurrent);				
+				listWord = wordBusiness.wordFilter(category, typeCurrent);
 				listWordIterator = listWord.iterator();
 				while (listWordIterator.hasNext()) {
-					word = (Word) listWordIterator.next();  
+					word = (Word) listWordIterator.next();
 					wordAnswer = wordAnswerBusiness.selectCorrectAnswer(word.getWord_id());
 					mapWord.put(word, wordAnswer);
 				}
@@ -384,5 +338,5 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 			e.printStackTrace();
 		}
 		return SUCCESS;
-}
+	}
 }
