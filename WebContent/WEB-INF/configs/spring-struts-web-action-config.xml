@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- ================== USER MODULE ================== -->
+	<bean id="springUserAction" class="framgiavn.project01.web.action.UserAction"
+		scope="prototype">
+		<property name="userBusiness" ref="UserBusiness" />
+		<property name="activityBusiness" ref="ActivityBusiness" />
+		<property name="lessonBusiness" ref="LessonBusiness" />
+		<property name="categoryBusiness" ref="CategoryBusiness" />
+<<<<<<< HEAD
+
+=======
+		<property name="relationshipBusiness" ref="RelationshipBusiness"></property>
+>>>>>>> Follow
+	</bean>
+	<!-- ================== ADMIN MODULE ================== -->
+	<bean id="springAdminAction" class="framgiavn.project01.web.action.AdminAction"
+		scope="prototype">
+		<property name="userBusiness" ref="UserBusiness" />
+	</bean>
+	<!-- ================== WORD MODULE ================== -->
+	<bean id="springWordAction" class="framgiavn.project01.web.action.WordAction"
+		scope="prototype">
+		<property name="wordBusiness" ref="WordBusiness" />
+		<property name="wordAnswerBusiness" ref="WordAnswerBusiness"></property>
+        <property name="categoryBusiness" ref="CategoryBusiness"></property>
+	</bean>
+
+	<!-- ================== CATEGORY MODULE ================== -->
+	<bean id="springCategoryAction" class="framgiavn.project01.web.action.CategoryAction"
+		scope="prototype">
+		<property name="categoryBusiness" ref="CategoryBusiness" />
+		<property name="userBusiness" ref="UserBusiness" />
+	</bean>
+
+	<!-- ================== LESSON MODULE ================== -->
+	<bean id="springLessonAction" class="framgiavn.project01.web.action.LessonAction"
+		scope="prototype">
+		<property name="lessonBusiness" ref="LessonBusiness" />
+		<property name="wordBusiness" ref="WordBusiness" />		
+		<property name="lessonWordBusiness" ref="LessonWordBusiness" />
+		<property name="wordAnswerBusiness" ref="WordAnswerBusiness" />
+		<property name="activityBusiness" ref="ActivityBusiness" />
+	</bean>
+
+	<!-- ================== LESSON WORD MODULE ================== -->
+	<bean id="springLessonWordAction" class="framgiavn.project01.web.action.LessonWordAction"
+		scope="prototype">
+		<property name="lessonWordBusiness" ref="LessonWordBusiness" />
+		
+	</bean>
+
+	<!-- ================== WORD ANSWER MODULE ================== -->
+	<bean id="springWordAnswerAction" class="framgiavn.project01.web.action.WordAnswerAction"
+		scope="prototype">
+		<property name="wordAnswerBusiness" ref="WordAnswerBusiness" />
+	</bean>
+
+	<!-- ================== ACTIVITY MODULE ================== -->
+	<bean id="springActivityAction" class="framgiavn.project01.web.action.ActivityAction"
+		scope="prototype">
+		<property name="activityBusiness" ref="ActivityBusiness" />
+	</bean>
+
+
+
+</beans>
