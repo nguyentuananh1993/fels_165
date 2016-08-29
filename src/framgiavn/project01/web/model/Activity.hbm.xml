@@ -8,7 +8,7 @@
 		dynamic-insert="true" dynamic-update="true">
 		<id name="activity_id" type="java.lang.Integer">
 			<column name="activity_id" length="10" />
-			<generator class="assigned" />
+			<generator class="identity" />
 		</id>
 
 		<property name="target_id" type="java.lang.Integer">
@@ -28,8 +28,13 @@
 		</property>
 
 		<property name="updated_at" type="java.util.Date">
-			<column name="updated" />
+			<column name="updated_at" />
 		</property>
 
 	</class>
+	<query name="Activity.selectActivityByUserId">
+		select activity
+		from Activity activity
+		where activity.user_id = :user_id
+	</query>
 </hibernate-mapping>

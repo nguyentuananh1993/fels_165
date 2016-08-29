@@ -1,7 +1,6 @@
 package framgiavn.project01.web.business.impl;
 
 import java.util.List;
-
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.dao.UserDAO;
 import framgiavn.project01.web.model.User;
@@ -108,5 +107,4 @@ public class UserBusinessImpl implements UserBusiness {
 		}
 		// TODO Auto-generated method stub
 	}
-
 }

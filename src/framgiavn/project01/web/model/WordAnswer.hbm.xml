@@ -37,6 +37,10 @@
 		where word_answer.correct = 1
 		and word_answer.word_id = :word_id
 	</query>
-
+	<query name="WordAnswer.SelectWordAnswerByWordId">
+		select word_answer
+		from WordAnswer word_answer
+		where word_answer.word_id = :word_id
+	</query>
 
 </hibernate-mapping>

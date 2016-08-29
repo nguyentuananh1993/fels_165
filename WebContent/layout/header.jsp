@@ -19,15 +19,23 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<s:url value="/"/>">HOME</a></li>
 				<li><a href="<s:url value="/about"/>">ABOUT</a></li>
-				<% Object obj = request.getSession().getAttribute("user");
-					if(obj == null){
+				<%
+					Object obj = request.getSession().getAttribute("user");
+					if (obj == null) {
 				%>
-				<li><a href="<s:url value="/user/logIn"/>">SIGN IN</a></li>
-				<li><a href="<s:url value="/user/signUp"/>">SIGN UP</a></li>
-				<% }else{%>
-				<li><a href="<s:url value="/user/signOut"/>">SIGN OUT</a></li>	
-				<% } %>
-
+				<li><a href="<s:url value="/user/logIn"/>"> SIGN IN </a></li>
+				<li><a href="<s:url value="/user/signUp"/>"> SIGN UP </a></li>
+				<%
+					} else {
+				%>
+				<li><a href="<s:url value="/category/listAllCategory"/>">
+						CATEGORY </a></li>
+				<li><a href="<s:url value="/word/"/>"> WORDS </a></li>
+				<li><a href="<s:url value="/user/showProfile"/>"> PROFILE </a></li>
+				<li><a href="<s:url value="/user/signOut"/>"> SIGN OUT</a></li>
+				<%
+					}
+				%>
 			</ul>
 		</div>
 	</div>

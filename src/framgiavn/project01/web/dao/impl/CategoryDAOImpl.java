@@ -1,11 +1,8 @@
 package framgiavn.project01.web.dao.impl;
 
-
 import java.util.List;
-
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import framgiavn.project01.web.dao.CategoryDAO;
 import framgiavn.project01.web.model.Category;
 import framgiavn.project01.web.ulti.Logit2;
@@ -39,17 +36,6 @@ public class CategoryDAOImpl extends HibernateDaoSupport implements CategoryDAO 
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
 			throw re;
-		}
-	}
-
-	@Override
-	public Category findCategoryById(Integer category_id) throws Exception {
-		try {
-			Query query = getSession().getNamedQuery("Category.findById");
-			query.setParameter("category_id", category_id);
-			return (Category) query.uniqueResult();
-		} catch (Exception e) {
-			throw e;
 		}
 	}
 
@@ -92,4 +78,18 @@ public class CategoryDAOImpl extends HibernateDaoSupport implements CategoryDAO 
 	public void addCategory(Category category) throws Exception {
 		getHibernateTemplate().save(category);
 	}
+
+	@Override
+	public Category findCategoryById(int category_id) throws Exception {
+		try {
+			Query query = getSession().getNamedQuery("Category.SelectCategoryById");
+			query.setParameter("category_id", category_id);
+			Category category = (Category) query.uniqueResult();
+			return category;
+		} catch (RuntimeException re) {
+			log.error ("get failed", re);
+			throw re;
+		}
+	}
+
 }

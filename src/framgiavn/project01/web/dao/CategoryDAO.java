@@ -10,8 +10,6 @@ public interface CategoryDAO {
 
 	public List<Category> listAllCategory() throws Exception;
 	
-	public Category findCategoryById(Integer category_id) throws Exception;
-	
 	public void editCategory(Category category) throws Exception;
 	
 	public boolean deleteCategoryById(Integer category_id) throws Exception;
@@ -20,4 +18,6 @@ public interface CategoryDAO {
 	
 	public void addCategory(Category category) throws Exception;
 	
+	public Category findCategoryById(int category_id) throws Exception;
+
 }

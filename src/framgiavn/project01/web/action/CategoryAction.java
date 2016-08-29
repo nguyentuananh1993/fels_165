@@ -3,17 +3,12 @@ package framgiavn.project01.web.action;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.ServletContext;
-
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.web.context.ServletContextAware;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.net.httpserver.Authenticator.Success;
-
 import framgiavn.project01.web.model.Category;
 import framgiavn.project01.web.model.User;
 import framgiavn.project01.web.business.CategoryBusiness;
@@ -62,19 +57,16 @@ public class CategoryAction extends ActionSupport implements SessionAware, Servl
 		this.user = user;
 	}	
 
-
 	public List<Category> getListCategory() {
 		return listCategory;
 	}
-	
 	public void setListCategory(List<Category> listCategory) {
 		this.listCategory = listCategory;
 	}
-	
 	public CategoryBusiness getCategoryBusiness() {
 		return categoryBusiness;
 	}
-	
+
 	public void setCategoryBusiness(CategoryBusiness categoryBusiness) {
 		this.categoryBusiness = categoryBusiness;
 	}
@@ -205,7 +197,6 @@ public class CategoryAction extends ActionSupport implements SessionAware, Servl
 			return ERROR;
 		}
 	}
-
 
 
 }

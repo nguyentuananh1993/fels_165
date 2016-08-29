@@ -1,20 +1,23 @@
 package framgiavn.project01.web.action;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.ServletContext;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.web.context.ServletContextAware;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ActionContext;
-
+import framgiavn.project01.web.business.ActivityBusiness;
+import framgiavn.project01.web.business.CategoryBusiness;
+import framgiavn.project01.web.business.LessonBusiness;
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.model.User;
+import framgiavn.project01.web.model.Activity;
+import framgiavn.project01.web.model.Category;
 
 public class UserAction extends ActionSupport implements SessionAware, ServletContextAware {
 	/**
@@ -30,18 +33,33 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	private String myFileFileName;
 	private String email;
 	private String username;
+	private String password;
 	private SessionMap<String, Object> session;
 	private ServletContext context;
-	
+
+	private ActivityBusiness activityBusiness;
+	private List<Activity> listActivity;
+	private List<Category> listCategory = new ArrayList<Category>();
+	private CategoryBusiness categoryBusiness;
+	private LessonBusiness lessonBusiness;
+
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = (SessionMap<String, Object>) session;
 	}
 
 	public void setServletContext(ServletContext servletContext) {
-	     this.context = servletContext;
+		this.context = servletContext;
 	}
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -49,7 +67,7 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -57,7 +75,7 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public void setUserBusiness(UserBusiness userBusiness) {
 		this.userBusiness = userBusiness;
 	}
@@ -100,6 +118,50 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 
 	public void setMyFileFileName(String myFileFileName) {
 		this.myFileFileName = myFileFileName;
+	}
+
+	public ActivityBusiness getActivityBusiness() {
+		return activityBusiness;
+	}
+
+	public void setActivityBusiness(ActivityBusiness activityBusiness) {
+		this.activityBusiness = activityBusiness;
+	}
+
+	public UserBusiness getUserBusiness() {
+		return userBusiness;
+	}
+
+	public List<Activity> getListActivity() {
+		return listActivity;
+	}
+
+	public void setListActivity(List<Activity> listActivity) {
+		this.listActivity = listActivity;
+	}
+
+	public List<Category> getListCategory() {
+		return listCategory;
+	}
+
+	public void setListCategory(List<Category> listCategory) {
+		this.listCategory = listCategory;
+	}
+
+	public CategoryBusiness getCategoryBusiness() {
+		return categoryBusiness;
+	}
+
+	public void setCategoryBusiness(CategoryBusiness categoryBusiness) {
+		this.categoryBusiness = categoryBusiness;
+	}
+
+	public LessonBusiness getLessonBusiness() {
+		return lessonBusiness;
+	}
+
+	public void setLessonBusiness(LessonBusiness lessonBusiness) {
+		this.lessonBusiness = lessonBusiness;
 	}
 
 	public String findByUserId() {
@@ -176,54 +238,103 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 			if (user != null) {
 				session.put("user", user);
 				return SUCCESS;
-			} else
+			} else {
+				System.out.println("ERROR1");
 				return ERROR;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		System.out.println("ERROR2");
 		return ERROR;
 	}
-	
-	 public String signOut() {
-	    if (session != null) {
-	      session.invalidate();
-	    }
-	    return SUCCESS;
-	  }
+
+	public String signOut() {
+		if (session != null) {
+			session.invalidate();
+		}
+		return SUCCESS;
+	}
+
+
+	public String changePassword() throws Exception {
+		if ((password == null) || (passwordConfirm == null)) {
+			return ERROR;
+		}
+		if (password.length() < 8) {
+			addFieldError("user.password", "Password must have at least 8 characters");
+			return ERROR;
+		} else if (!password.equals(passwordConfirm)) {
+			addFieldError("passwordConfirm", "Password is not matched");
+			return ERROR;
+		}
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		user.setPassword(password);
+		userBusiness.editProfile(user);
+		return SUCCESS;
+	}
+
 	public String editProfile() throws Exception {
+		if ((username == null) || (email == null)) {
+			user = (User) ActionContext.getContext().getSession().get("user");
+			return ERROR;
+		}
 		try {
 			User user = (User) ActionContext.getContext().getSession().get("user");
 			System.out.println(user.getUsername());
 			String destPath = context.getRealPath("/") + "images\\";
 			System.out.println(destPath);
 			String dest = user.getUser_id() + ".jpg";
-			File destFile = new File(destPath, dest);
-			FileUtils.copyFile(myFile, destFile);
-			user.setAvatar(destPath + user.getUser_id() + ".jpg");
-			user.setEmail(email);
-			user.setUsername(username);
+			if (myFile != null) {
+				File destFile = new File(destPath, dest);
+				FileUtils.copyFile(myFile, destFile);
+				user.setAvatar(destPath + user.getUser_id() + ".jpg");
+			} else {
+				System.out.println("Myfile == Null? Why?");
+			}
+			if (email.trim().equals(user.getEmail())) {
+				;
+			} else {
+				user.setEmail(email);
+			}
+			if (username.trim().equals(user.getUsername())) {
+				;
+			} else {
+				user.setUsername(username);
+			}
 			userBusiness.editProfile(user);
-			validateSignUp();
 			return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return ERROR;
 	}
-	
-	public String showProfile(){
-		user = (User) ActionContext.getContext().getSession().get("user");
-		return SUCCESS;
-	}
-	
-	public String homePage() {
-		System.out.println("open homepage");
-		return SUCCESS;
-	}
-	
+
 	public String about() {
 		System.out.println("about page");
 		return SUCCESS;
 	}
+
+	public String showProfile() {
+		user = (User) ActionContext.getContext().getSession().get("user");
+		try {
+			listActivity = activityBusiness.showActivity(user.getUser_id());
+			for(int i = 0; i < listActivity.size(); i++){
+				Activity a = listActivity.get(i);
+				int category_id = lessonBusiness.getCategoryIdByLessonId(a.getTarget_id());
+				Category c = categoryBusiness.findCategoryById(category_id);
+				listCategory.add(i, c);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return SUCCESS;
+	}
+
+	public String homePage() {
+		System.out.println("Homepage!!!!!");
+		return SUCCESS;
+	}
+
 }

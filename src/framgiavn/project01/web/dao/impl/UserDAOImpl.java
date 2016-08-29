@@ -1,8 +1,8 @@
 package framgiavn.project01.web.dao.impl;
 
+
 import java.util.List;
 
-//import org.apache.activemq.transaction.Transaction;
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
@@ -11,7 +11,6 @@ import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.hibernate.Transaction;
 import framgiavn.project01.web.dao.UserDAO;
-import framgiavn.project01.web.model.Category;
 import framgiavn.project01.web.model.User;
 import framgiavn.project01.web.ulti.Logit2;
 

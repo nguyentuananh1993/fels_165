@@ -14,6 +14,7 @@
 		scope="prototype">
 		<property name="userBusiness" ref="UserBusiness" />
 	</bean>
+
 	<!-- ================== WORD MODULE ================== -->
 	<bean id="springWordAction" class="framgiavn.project01.web.action.WordAction"
 		scope="prototype">
@@ -33,6 +34,10 @@
 	<bean id="springLessonAction" class="framgiavn.project01.web.action.LessonAction"
 		scope="prototype">
 		<property name="lessonBusiness" ref="LessonBusiness" />
+		<property name="wordBusiness" ref="WordBusiness" />		
+		<property name="lessonWordBusiness" ref="LessonWordBusiness" />
+		<property name="wordAnswerBusiness" ref="WordAnswerBusiness" />
+		<property name="activityBusiness" ref="ActivityBusiness" />
 	</bean>
 
 	<!-- ================== LESSON WORD MODULE ================== -->
@@ -52,7 +57,4 @@
 		scope="prototype">
 		<property name="activityBusiness" ref="ActivityBusiness" />
 	</bean>
-
-
-
 </beans>

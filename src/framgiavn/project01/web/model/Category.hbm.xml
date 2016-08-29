@@ -34,7 +34,14 @@
 		select category
 		from Category category
 	</query>
+
 	<query name="Category.findById">
+		select category
+		from Category category
+		where category.category_id = :category_id
+	</query>
+
+	<query name="Category.SelectCategoryById">
 		select category
 		from Category category
 		where category.category_id = :category_id

@@ -1,19 +1,16 @@
 package framgiavn.project01.web.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.ServletContext;
-
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.web.context.ServletContextAware;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-
 import framgiavn.project01.web.business.CategoryBusiness;
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.business.WordAnswerBusiness;
@@ -36,7 +33,12 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 	private CategoryBusiness categoryBusiness = null;
 	private Map<Word, WordAnswer> mapWord = null;
 	private WordAnswerBusiness wordAnswerBusiness = null;
-
+	private List<String> typefilter;
+	private static final String L ="Leaned";
+	private static final String UL ="Not Leaned";
+	private static final String A ="All";
+	private int typeCurrent = 3;
+	private int typePre = 3;
 	@Override
 	public void setServletContext(ServletContext arg0) {
 		// TODO Auto-generated method stub
@@ -47,16 +49,30 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 		return session;
 	}
 
-	public void setSession(SessionMap<String, Object> session) {
-		this.session = (SessionMap<String, Object>) session;
-	}
-
 	public Word getWord() {
 		return word;
 	}
 	public void setWord(Word word) {
 		this.word = word;
 	}
+	
+
+	public int getTypeCurrent() {
+		return typeCurrent;
+	}
+
+	public void setTypeCurrent(int typeCurrent) {
+		this.typeCurrent = typeCurrent;
+	}
+
+	public int getTypePre() {
+		return typePre;
+	}
+
+	public void setTypePre(int typePre) {
+		this.typePre = typePre;
+	}
+
 	public CategoryBusiness getCategoryBusiness() {
 		return categoryBusiness;
 	}
@@ -137,29 +153,37 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 		}
 		return false;
 	}
-	public String findWordByCategory() {
+
+	public String findWord() {
 		Word word;
 		WordAnswer wordAnswer;
 		Iterator listWordIterator;
 		mapWord = new HashMap<Word, WordAnswer>();
+		typefilter = new ArrayList<>();
+		typefilter.add(L);
+		typefilter.add(UL);
+		typefilter.add(A);
 		try {
 			listCategory = categoryBusiness.listAllCategory();
 			if (category == null || category.equals("")) {
 				return SUCCESS;
 			} else {
 				System.out.println(category);
-				listWord = wordBusiness.wordFilterByCategory(category);
+				System.out.println("Type : " + typeCurrent);
+				listWord = wordBusiness.wordFilter(category, typeCurrent);				
 				listWordIterator = listWord.iterator();
 				while (listWordIterator.hasNext()) {
-					word = (Word) listWordIterator.next();
+					word = (Word) listWordIterator.next();  
 					wordAnswer = wordAnswerBusiness.selectCorrectAnswer(word.getWord_id());
 					mapWord.put(word, wordAnswer);
 				}
+				this.setTypePre(typeCurrent);
 				return SUCCESS;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return ERROR;
 	}
 
@@ -203,7 +227,33 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 			e.printStackTrace();
 			return ERROR;
 		}
-		
+	}
+
+	public String findWordByCategory() {
+		Word word;
+		WordAnswer wordAnswer = null;
+		Iterator listWordIterator;
+		mapWord = new HashMap<Word, WordAnswer>();
+		try {
+			listCategory = categoryBusiness.listAllCategory();
+			if (category == null || category.equals("")) {
+				return SUCCESS;
+			} else {
+				System.out.println(category);
+				listWord = wordBusiness.wordFilterByCategory(category);
+
+				listWordIterator = listWord.iterator();
+				while (listWordIterator.hasNext()) {
+					word = (Word) listWordIterator.next();
+					wordAnswer = wordAnswerBusiness.selectCorrectAnswer(word.getWord_id());
+					mapWord.put(word, wordAnswer);
+				}
+				return SUCCESS;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 	public String adminWordDelete() {
 		if (!checkLogIn()) {
@@ -225,6 +275,7 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 		}
 		return SUCCESS;
 	}
+
 	public String actionAdminWordAdd() {
 		if (!checkLogIn()) {
 			return ERROR;
@@ -237,6 +288,16 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ERROR;
+		}
+		return ERROR;
+	}
+
+	public String showWord() {
+		try {
+			listCategory = categoryBusiness.listAllCategory();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return SUCCESS;
 	}
@@ -259,4 +320,5 @@ public class WordAction extends ActionSupport implements SessionAware, ServletCo
 		}
 		return ERROR;
 	}
+	
 }
