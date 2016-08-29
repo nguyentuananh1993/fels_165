@@ -4,25 +4,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ServletContextAware;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ActionContext;
-
 import framgiavn.project01.web.business.ActivityBusiness;
 import framgiavn.project01.web.business.CategoryBusiness;
 import framgiavn.project01.web.business.LessonBusiness;
@@ -341,7 +329,12 @@ public class UserAction extends ActionSupport implements SessionAware, ServletCo
 	}
 
 	public String homePage() {
-		System.out.println("Homepage!!!!!");
+		System.out.println("open homepage");
+		return SUCCESS;
+	}
+	
+	public String about() {
+		System.out.println("about page");
 		return SUCCESS;
 	}
 

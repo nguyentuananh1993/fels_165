@@ -28,7 +28,9 @@
 		<action name="" class="springUserAction" method="homePage">
 			<result name="success">HomePage</result>
 		</action>
-
+		<action name="about" class="springUserAction" method="about">
+			<result name="success">About</result>
+		</action>
 	</package>
 
 	<!-- ===== Include Web Module Configuration ===== -->
@@ -36,9 +38,5 @@
 	<include file="struts-word.xml" />
 	<include file="struts-category.xml" />
  	<include file="struts-lesson.xml" />
-<!-- 
-	<include file="struts-lessonword.xml" />
-	<include file="struts-wordanswer.xml" />
-	<include file="struts-activity.xml" />
- -->
-   	</struts>
+ 	<include file="struts-admin.xml" />
+</struts>

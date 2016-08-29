@@ -39,13 +39,54 @@ public class CategoryBusinessImpl implements CategoryBusiness {
 	}
 
 	@Override
-	public Category findCategoryById(int category_id) throws Exception{
+	public Category findCategoryById(int category_id) throws Exception {
 		try {
 			return categoryDAO.findCategoryById(category_id);
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
-			throw e;
+			return null;
 		}
 	}
+
+	@Override
+	public void editCategory(Category category) throws Exception {
+		try {
+			categoryDAO.editCategory(category);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public boolean deleteCategoryById(Integer category_id) throws Exception {
+		try {
+			categoryDAO.deleteCategoryById(category_id);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteAllCategory() throws Exception {
+		try {
+			categoryDAO.deleteAllCategory();
+			System.out.println("category dao");
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public void addCategory(Category category) throws Exception {
+		try {
+			categoryDAO.addCategory(category);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }
