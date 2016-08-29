@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!-- Configure NameSpace for action web -->
+	<package name="User" namespace="/user" extends="default-web">
+		<action name="findByUserId*" class="springUserAction" method="findByUserId">
+			<param name="user.user_id">{1}</param>
+			<result name="success">User.Info</result>
+			<result name="input">User.Info</result>
+			<result name="error">User.Info</result>
+		</action>
+
+		<action name="findByUsername*" class="springUserAction" method="findByUsername">
+			<param name="user.username">{1}</param>
+			<result name="success">User.Info</result>
+			<result name="error">User.Info</result>
+		</action>
+
+		<action name="signUp" class="springUserAction" method="signUp">
+			<result name="input">User.SignUp</result>
+			<result name="success">User.Info</result>
+			<result name="error">User.SignUp</result>
+		</action>
+
+		<action name="logIn" class="springUserAction" method="logIn">
+			<result name="success">User.Info</result>
+			<result name="error">User.LogIn</result>
+		</action>
+
+		<action name="editProfile" class="springUserAction" method="editProfile">
+			<result name="input">USer.Profile</result>
+			<result name="success">User.Info</result>
+			<result name="error">User.Profile</result>
+		</action>
+
+		<action name="showProfile" class="springUserAction" method="showProfile">
+			<result name="success">User.ShowProfile</result>
+		</action>
+		<action name="signOut" class="springUserAction" method="signOut">
+			<result name="success">User.Info</result>
+		</action>
+	</package>
+</struts>

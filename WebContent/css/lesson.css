@@ -1,0 +1,192 @@
+.navbar.navbar-default {
+  margin-bottom: 0px !important;
+}
+
+h2.studying.HeaderTd {
+  margin-top: 0px;
+}
+
+#subheader.mode {
+  background: rgba(0, 0, 0, 0) linear-gradient(#f9f9f9, #f2f2f2) repeat scroll 0 0;
+  border-bottom: 1px solid #d3d1ce;
+  box-shadow: none;
+  height: auto;
+  text-shadow: none;
+  z-index: 9999;
+}
+
+@media screen and (max-width: 620px) {
+  #subheader.mode {
+    background: rgba(0, 0, 0, 0) linear-gradient(#fff, #f9f9f9) repeat scroll 0 0;
+  }
+}
+
+#subheader.mode .container {
+  height: 35px;
+  line-height: 35px;
+}
+
+#subheader.mode .selection {
+  position: relative;
+  text-align: right;
+  z-index: 3;
+}
+
+#subheader.mode .selection .segmented-control {
+  opacity: 0.85;
+  overflow: hidden;
+  transition: all 150ms ease-in 0s;
+  width: 0;
+}
+
+.has-selected #subheader.mode .selection .segmented-control {
+  padding: 0 5px 0 0;
+  width: auto;
+}
+
+.selected-only #subheader.mode .selection .label {
+  color: #f4af09;
+}
+
+#subheader.mode .selection a {
+  border-color: #2d3639;
+  color: #2d3639;
+  font-family: "Hurme Geometric Sans 2", hurme_no2-webfont, -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 0 7px;
+  text-align: center;
+}
+
+#subheader.mode .selection a .icon {
+  color: inherit;
+  font-size: 13px;
+  margin: 0;
+}
+
+.ie #subheader.mode .selection a .icon {
+  margin-top: -1px;
+}
+
+#subheader.mode .selection a .extraText,
+#subheader.mode .selection a .text {
+  text-transform: none;
+}
+
+@media screen and (max-width: 768px) {
+  #subheader.mode .selection a {
+    text-transform: capitalize;
+  }
+}
+
+.selected-only #subheader.mode .selection .selected,
+.all-terms #subheader.mode .selection .all {
+  background: #2d3639 none repeat scroll 0 0;
+  color: #fff;
+}
+
+#subheader.mode h2.studying {
+  border: 0 none;
+  padding: 0 16px;
+  white-space: normal;
+  z-index: 2;
+}
+
+@media screen and (max-width: 768px) {
+  #subheader.mode h2.studying {
+    padding: 0 10px;
+    width: 100%;
+  }
+}
+
+.embed #subheader.mode h2.studying {
+  padding: 0 10px;
+  width: 100%;
+}
+
+#subheader.mode h2.studying .title-wrap {
+  display: block;
+  padding-right: 5px;
+  position: relative;
+}
+
+#subheader.mode h2.studying .title-wrap::before {
+  bottom: 0;
+  content: "";
+  display: none;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}
+
+.embed #subheader.mode h2.studying .title-wrap::before {
+  display: block;
+}
+
+#subheader.mode h2.studying a {
+  color: #2d3639;
+  display: block;
+  font: 400 14px/35px "Hurme Geometric Sans 2", hurme_no2-webfont, -apple-system, BlinkMacSystemFont, sans-serif;
+  height: 35px;
+  overflow: hidden;
+  transition: all 135ms ease-out 0s;
+}
+
+@media print {
+  #subheader.mode h2.studying a {
+    color: #000;
+    font-size: 20px;
+  }
+}
+
+.embed #subheader.mode h2.studying a {
+  color: #000;
+}
+
+#subheader.mode h2.studying a .back {
+  opacity: 0.65;
+  transition: all 100ms ease-out 0s;
+}
+
+.embed #subheader.mode h2.studying a .back {
+  display: none;
+}
+
+#subheader.mode h2.studying a:hover .back {
+  filter: none;
+  opacity: 1;
+}
+
+
+.card-item {
+    padding: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #D7D6D3;
+    margin-bottom: 30px;
+}
+.answer-item {
+    display: table-cell;
+    border-style: solid;
+    border-color: #D7D6D3;
+}
+.answer-item-1 {
+    border-width: 0px 1px 1px 0px;
+}
+.answer-item-2 {
+    border-width: 0px 0px 1px 1px;
+}
+.answer-item-3 {
+    border-width: 1px 1px 0px 0px;
+}
+.answer-item-4 {
+    border-width: 1px 0px 0px 1px;
+}
+.answer {
+    border-radius: 10px;
+    padding: 0px;
+    border: 1px solid #D7D6D3;
+    background-color: #fff;
+    display: table;
+    margin-bottom: 40px;
+}

@@ -1,0 +1,213 @@
+.navbar.navbar-default {
+  margin-bottom: 0px !important;
+}
+ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+ul li {
+    background: transparent none repeat scroll 0 0;
+    margin: 0;
+    padding: 0;
+}
+.tabs-bar {
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #e7e4df, #e0dcd6) repeat scroll 0 0;
+  box-shadow: 0 1px 0 #f7f4f0 inset, 0 -1px 0 #d1cdc7 inset;
+  line-height: 42px;
+  margin: 0;
+  position: relative;
+}
+
+.tabs-bar::before,
+.tabs-bar::after {
+  content: "";
+  display: table;
+}
+
+.tabs-bar::after {
+  clear: both;
+}
+
+.really.ie .tabs-bar {
+  min-width: 900px;
+}
+
+.tabs-bar .tabs a {
+  box-shadow: -1px 0 0 #d1cdc7;
+  color: #445163;
+  display: block;
+  font-size: 14px;
+  padding: 0 24px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.tabs-bar .tabs.has-2-tabs a {
+  padding: 0 32px;
+}
+
+.tabs-bar .tabs li {
+  float: left;
+}
+
+@media screen and (max-width: 900px) {
+  .tabs-bar .tabs li a {
+    font-size: 13px;
+    padding: 0 16px;
+  }
+  .tabs-bar .tabs li:nth-child(1) a {
+    padding-left: 24px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .tabs-bar .tabs li a {
+    font-size: 12px;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tabs-bar .tabs li a {
+    font-size: 12px;
+    padding: 0 16px;
+  }
+  .tabs-bar .tabs li:nth-child(1) a {
+    padding-left: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .tabs-bar .tabs li a {
+    padding: 0 8px;
+  }
+  .tabs-bar .tabs li:nth-child(1) a {
+    padding-left: 8px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .tabs-bar .tabs.has-2-tabs li {
+    width: 50%;
+  }
+  .tabs-bar .tabs.has-2-tabs li a {
+    font-size: 14px;
+    padding: 0;
+    text-align: center;
+  }
+  .tabs-bar .tabs.has-3-tabs li {
+    width: 32%;
+  }
+  .tabs-bar .tabs.has-3-tabs li a {
+    font-size: 13px;
+    padding: 0;
+    text-align: center;
+  }
+  .tabs-bar .tabs.has-4-tabs li {
+    width: 25%;
+  }
+  .tabs-bar .tabs.has-4-tabs li a {
+    font-size: 13px;
+    padding: 0;
+    text-align: center;
+  }
+  .tabs-bar .tabs.has-5-tabs li {
+    width: 20%;
+  }
+  .tabs-bar .tabs.has-5-tabs li a {
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.terms-tab .tabs-bar .terms-tab a,
+.scores-tab .tabs-bar .scores-tab a,
+.info-tab .tabs-bar .info-tab a,
+.class-progress-tab .tabs-bar .class-progress-tab a,
+.sets-tab .tabs-bar .sets-tab a,
+.members-tab .tabs-bar .members-tab a,
+.invite-tab .tabs-bar .invite-tab a,
+.created-tab .tabs-bar .created-tab a,
+.studied-tab .tabs-bar .studied-tab a,
+.folders-tab .tabs-bar .folders-tab a,
+.classes-tab .tabs-bar .classes-tab a,
+.admin-tab .tabs-bar .admin-tab a,
+.general-tab .tabs-bar .general-tab a {
+  background: #f5f2ee none repeat scroll 0 0;
+  box-shadow: 1px 0 0 #d1cdc7, -1px 0 0 #d1cdc7;
+  position: relative;
+  z-index: 2;
+}
+
+.terms-tab .tabs-bar .terms-tab a .notification,
+.scores-tab .tabs-bar .scores-tab a .notification,
+.info-tab .tabs-bar .info-tab a .notification,
+.class-progress-tab .tabs-bar .class-progress-tab a .notification,
+.sets-tab .tabs-bar .sets-tab a .notification,
+.members-tab .tabs-bar .members-tab a .notification,
+.invite-tab .tabs-bar .invite-tab a .notification,
+.created-tab .tabs-bar .created-tab a .notification,
+.studied-tab .tabs-bar .studied-tab a .notification,
+.folders-tab .tabs-bar .folders-tab a .notification,
+.classes-tab .tabs-bar .classes-tab a .notification,
+.admin-tab .tabs-bar .admin-tab a .notification,
+.general-tab .tabs-bar .general-tab a .notification {
+  color: #c8cad0;
+}
+
+.tabs-bar .teacher.badge {
+  font-size: 9px;
+  margin-right: -2px;
+  vertical-align: 2px;
+}
+
+.tabs-bar .admin-tab a {
+  color: #388e34;
+  font-size: 90%;
+  text-shadow: 0 0 3px #59c054;
+}
+
+@media screen and (max-width: 900px) {
+  .classpage .tabs-bar .extra,
+  .classpage .tabs-bar .badge {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tabs-bar .extra,
+  .tabs-bar .badge {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tabs-bar .SetPageTabs-label--full {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .tabs-bar .SetPageTabs-label--abbreviated {
+    display: none;
+  }
+}
+
+@media print {
+  .tabs-bar {
+    display: none;
+  }
+}
+
+.terms {
+    background-color: #fff;
+    border: 1px solid #D7D6D3;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.term {
+    padding: 20px;
+    border-bottom: 1px solid #D7D6D3;
+}

@@ -1,0 +1,203 @@
+.feed {
+    padding-bottom: 42px;
+    padding-top: 0;
+}
+.feed .timestamp {
+    background: transparent none repeat scroll 0 0;
+    border-bottom: 3px solid #4257b2;
+    border-radius: 0;
+    box-shadow: none;
+    color: #333;
+    float: none;
+    font: 14px/36px "Hurme Geometric Sans 2",hurme_no2-webfont,-apple-system,BlinkMacSystemFont,sans-serif;
+    margin: 0;
+    padding: 32px 24px 4px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.time-block.is-inFuture .timestamp {
+  background: transparent none repeat scroll 0 0;
+  border-bottom: 3px solid #4257b2;
+  border-radius: 0;
+  box-shadow: none;
+  color: #333;
+  float: none;
+  font: 14px/36px "Hurme Geometric Sans 2", hurme_no2-webfont, -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 32px 24px 4px 0px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.feed .story {
+  border-bottom: 1px solid #d3d1ce;
+  position: relative;
+}
+
+.feed .story:last-child {
+  border: 0 none;
+}
+
+.feed .story .info {
+  position: relative;
+}
+
+.feed .story .info .icon {
+  color: #4257b2;
+  display: inline-block;
+  font-size: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.old.ie .feed .story .info .icon {
+  display: inline-block;
+  position: static;
+  text-align: right;
+  width: auto;
+}
+
+.feed .story.new-story .feed-title::before {
+  background-color: #4257b2;
+  border-radius: 3px;
+  bottom: 0;
+  content: "";
+  height: 6px;
+  left: 10px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  width: 6px;
+}
+
+.feed-preview {
+  clear: left;
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.cursor .feed-preview:hover {
+  background: rgba(0, 0, 0, 0.04) none repeat scroll 0 0;
+  cursor: pointer;
+}
+
+.feed-preview .info {
+  padding: 12px 0;
+  width: auto;
+}
+
+.feed-preview .info .feed-title {
+  color: #344ec0;
+  display: inline-block;
+  font: 400 18px/26px "Hurme Geometric Sans 2", hurme_no2-webfont, -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0 10px 0 24px;
+  max-width: 25em;
+}
+
+.feed-preview .info .terms-count,
+.feed-preview .info .timestamp {
+  color: #555;
+  display: block;
+  font: 13px/16px "Hurme Geometric Sans 2", hurme_no2-webfont, -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0 0 18px 24px;
+}
+
+.feed-preview .info .created {
+  color: #777;
+  display: inline-block;
+  float: right;
+  font: 12px/24px "Hurme Geometric Sans 2", hurme_no2-webfont, -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 3px 10px 0 0;
+  min-width: 140px;
+  padding: 0 8px;
+  vertical-align: middle;
+}
+
+.created-tab.profilepage .feed-preview .info .created {
+  display: none;
+}
+
+.feed-preview .info .created .profile-image {
+  margin-right: 4px;
+}
+
+.feed-preview .info .created .class-icon {
+  color: #aaa;
+  font-size: 13px;
+  margin-right: 6px;
+}
+
+.feed a.set-link,
+.feed a.class-link,
+.feed a.folder-link,
+.feed a.user-link {
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 15;
+}
+
+.ie .feed a.set-link,
+.ie .feed a.class-link,
+.ie .feed a.folder-link,
+.ie .feed a.user-link {
+  background: #fff none repeat scroll 0 0;
+  opacity: 0;
+  z-index: 17;
+}
+
+.feed a.set-link:active,
+.feed a.class-link:active,
+.feed a.folder-link:active,
+.feed a.user-link:active {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1) inset;
+}
+
+.has-admin-rights .feed-preview {
+  margin-right: 78px;
+}
+
+.time-block.is-inFuture .timestamp {
+  border-bottom-color: #388e34;
+}
+
+.time-block.is-inFuture .title-text {
+  color: #388e34;
+}
+
+.folder-preview .folder-info {
+  margin-right: 14px;
+  padding: 4px 0;
+  width: auto;
+}
+
+.folder-preview .folder-info .icon {
+  margin-top: -4px;
+}
+
+.folder-preview .folder-info .folder-description {
+  color: #777;
+  display: inline-block;
+  font: 13px "Hurme Geometric Sans 2", hurme_no2-webfont, -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0 0 0 8px;
+  overflow: hidden;
+  padding: 6px 0 0;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.study-feed .folder-preview .folder-info .folder-description {
+  display: none;
+}
+
+a {
+  color: #4257b2;
+}
+
+a:visited {
+  color: #4257b2;
+}
